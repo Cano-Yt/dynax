@@ -11,12 +11,12 @@ exports.run = async(client, msg) => {
 exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliases: ['komutlar', 'help', 'yardim', 'yardım', 'kullanımlar', 'komutyardım', 'hp', 'ytr', 'sd', 'kd'],
+    aliases: [],
     permLevel: 0
   };
   
   exports.help = {
-    name: 'komutlar',
+    name: 'yardım',
     description: 'Tüm komutları listeler. İsterseniz bir komut hakkında yardım eder..',
     usage: 'komutlar'
   };
