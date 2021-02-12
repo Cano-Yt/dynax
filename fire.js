@@ -6,7 +6,7 @@ const ayarlar = require('./ayarlar.json');
 const chalk = require('chalk');
 const fs = require('fs');
 const moment = require('moment');
-require('./util/eventLoader')(client);
+
 
 var prefix = ayarlar.prefix;
 
@@ -38,8 +38,8 @@ const log = message => {
 
 
 client.on('guildMemberAdd', async member => {
-   await member.roles.add(`806480832612270102`) //id yazan yere verilecek rol (unregistered)
-   await member.setNickname(`℘ İsim | Yaş`) //yeni gelen kullanıcının adını değiştirme
+  // await member.roles.add(`806480832612270102`) //id yazan yere verilecek rol (unregistered)
+  // await member.setNickname(`℘ İsim | Yaş`) //yeni gelen kullanıcının adını değiştirme
 let member2 = member.user 
 let zaman = new Date().getTime() - member2.createdAt.getTime()
 var user = member2 
@@ -52,6 +52,7 @@ takizaman = `Güvenli`}require("moment-duration-format");
   const gecen = moment.duration(zaman1).format(` YY **[Yıl,]** DD **[Gün,]** HH **[Saat,]** mm **[Dakika,]** ss **[Saniye]**`) 
   let message = member.guild.channels.cache.find(x => x.id === `806480558044872775`) //id yazan kısma kanal id'si [orn: register-chat]
    const taki = new Discord.MessageEmbed()
+   .setColor("ORANGE")
   .setTitle(
       "Welcome Fire"
     )
@@ -64,18 +65,15 @@ Kaydının Yapılması İçin Sesli Odaya Geçerek Ses Vermen Gerekli.
 Hesap Açılalı: **${gecen}** Olmuş.
 Bu Kullanıcı: **${takizaman}**
 `)
-.setColor('PURPLE')
-   message.send(``)
+   message.send(`<@member> <@&806484808817442836>`)
 message.send(taki)
-  
-          });
+});
 
 
 ////////////// KOMUTLAR SON
 ////////////// ALTI ELLEME
 require("./util/eventLoader")(client);
 
-client.login(ayarlar.token);
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
