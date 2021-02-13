@@ -1,27 +1,29 @@
 const Discord = require('discord.js')
 const db = require("quick.db")
-
+const ayarlar = require('../ayarlar.json')
 
 exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
-	          const ayarlar = require('../ayarlar.json')
-				    let prefix = await require('quick.db').fetch(`prefix.${message.guild.id}`) || ayarlar.prefix
 
-    let member = message.mentions.members.first();
+let prefix = await require('quick.db').fetch(`prefix.${message.guild.id}`) || ayarlar.prefix
+let member = message.mentions.members.first();
 let dil = db.fetch(`sunucudili_${message.guild.id}`)
-    require('request')({url: 'https://nekos.life/api/hug', json: true}, (req, res, json) => {
-      if(dil == "TR") {
-        if(!member) message.channel.send('Sarılmak istediğin kullanıcıyı etiketlemelisin!');
+require('request')({url: 'https://nekos.life/api/hug', json: true}, (req, res, json) => {
+
+  if(dil == "TR") {
+        if(!member) return message.channel.send('Sarılmak istediğin kullanıcıyı etiketlemelisin!');
+        if(member == message.author) return message.channel.send(`Kendine sarılamazsın :cry:\nAma ben sarılabilirim sana :hugging:`)
         let embed = new Discord.MessageEmbed()
         .setTitle(message.author.username +" " + member.user.username+ ' Adlı kullanıcıya sarılıyor!')
-        .setColor('#363942')
+        .setColor('#aaffff')
         .setImage(json.url);
         message.channel.send(embed);
       }
       if(dil == "EN") {
         if(!member) return message.channel.send('You must tag the user you want to hug!');
+        if(member == message.author) return message.channel.send(`You can't hug yourself :cry:\nBut I can hug you :hugging:`)
         let embed = new Discord.MessageEmbed()
         .setTitle(message.author.username +" " + member.user.username+ ' Hugs soo cute!')
-        .setColor('#363942')
+        .setColor('#aaffff')
         .setImage(json.url);
         message.channel.send(embed);
       }
