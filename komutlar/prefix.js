@@ -4,10 +4,12 @@ const db = require("quick.db")
 
 
 exports.run = async(client, message, args) => {
+ 
     let dil = db.fetch(`sunucudili_${message.guild.id}`)
     let prefix1 = args[0] || args[1]
     let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix
     if(dil == "TR") {
+       if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`Bu komutu kullanmak için \`Yönetici\` Yetkisine sahip olmalısın.`)
       if(args[0] == "sil") {
         db.delete(`prefix_${message.guild.id}`)
         message.channel.send(`Sunucudaki prefix'imi sildim\nYeni prefix'iniz : ${ayarlar.prefix}`)
@@ -20,6 +22,7 @@ exports.run = async(client, message, args) => {
       message.guild.owner.send(`${message.guild.name} Sunucunuzdaki prefix'iniz ${message.author} tarafından ${prefix1} olarak ayarlanmıştır.`)
     }
   if(dil == "EN") {
+       if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`You must have \`Administrator\` Permission to use this command.`)
           if(args[0] == "delete") {
         db.delete(`prefix_${message.guild.id}`)
         message.channel.send(`I deleted my prefix on the server\nNew prefix : ${ayarlar.prefix}`)
