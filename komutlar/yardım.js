@@ -15,7 +15,7 @@ const embed = new Discord.MessageEmbed()
  
   \`Moderasyon\`
 > **dil**
-
+ \`Memeler[Meemler]\`
 
 `)
 .setImage("https://media.discordapp.net/attachments/793827180513198100/810128122586202132/standard_2.gif")
@@ -31,7 +31,8 @@ message.channel.send(embed)
   \`Moderation\`
 > **Language**
 
-
+  \`Memes\`
+> **kiss | hug | tap**
 `)
 .setImage("https://media.discordapp.net/attachments/793827180513198100/810113577511419914/standard.gif")
 .setColor("#aaffff")

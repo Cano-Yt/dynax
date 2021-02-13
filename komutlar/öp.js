@@ -13,16 +13,16 @@ require('request')({url: 'https://nekos.life/api/kiss', json: true}, (req, res, 
         if(member == message.author) return message.channel.send("kendini öpmeyimi planlıyorsun ?! Hayır hayır bu olamaz")
         let embed = new Discord.MessageEmbed()
         .setTitle(message.author.username +" " + member.user.username+ ' Adlı kullanıcıyı Öpüyor!')
-        .setColor('#363942')
+        .setColor('#aaffff')
         .setImage(json.url);
         message.channel.send(embed);
   }
   if(dil == "EN") {
             if(!member) return message.reply('You have to tag the user you want to kiss!');
-        if(member == message.author) return message.channel.send("You are planning on kissing yourself ?! No no this can't be")
+        if(message.author.id == member.user.id) return message.channel.send("You are planning on kissing yourself ?! No no this can't be")
         let embed = new Discord.MessageEmbed()
         .setTitle(message.author.username +" " + member.user.username+ ' Kissing :kiss:!')
-        .setColor('#363942')
+        .setColor('#aaffff')
         .setImage(json.url);
         message.channel.send(embed);
   }
