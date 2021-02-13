@@ -6,6 +6,11 @@ const ayarlar = require('../ayarlar.json')
 let prefix = await require('quick.db').fetch(`prefix.${message.guild.id}`) || ayarlar.prefix
 let member = message.mentions.members.first();
 let dil = db.fetch(`sunucudili_${message.guild.id}`)
+  let bakım = db.fetch(`bakım`)
+  if(bakım == "bakımda") {
+    if(dil=="TR") return message.channel.send(`Bot bakımda!\nLütfen destek sunucumuza gelerek sorunu öğreniniz. Gelmel için ${prefix}davet`)
+    if(dil=="EN") return message.channel.send(`Bot repairing!\nPlease come support server and learn the problem. To come ${prefix}invite`)
+  } else {
 require('request')({url: 'https://nekos.life/api/kiss', json: true}, (req, res, json) => {
        
   if(dil == "TR") {
@@ -27,7 +32,7 @@ require('request')({url: 'https://nekos.life/api/kiss', json: true}, (req, res, 
         message.channel.send(embed);
   }
 });
-
+  }
 };
 
 exports.conf = {
