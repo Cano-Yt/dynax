@@ -15,8 +15,8 @@ const embed = new Discord.MessageEmbed()
  
   \`Moderasyon\`
 > **dil**
- \`Memeler[Meemler]\`
-
+ \`Eğlence\`
+> **öp | sarıl | okşa**
 `)
 .setImage("https://media.discordapp.net/attachments/793827180513198100/810128122586202132/standard_2.gif")
 .setColor("#aaffff")
@@ -29,9 +29,9 @@ message.channel.send(embed)
  \`Prefix : ${prefix}\`
  
   \`Moderation\`
-> **Language**
+> **Language | prefix**
 
-  \`Memes\`
+  \`Fun\`
 > **kiss | hug | tap**
 `)
 .setImage("https://media.discordapp.net/attachments/793827180513198100/810113577511419914/standard.gif")
@@ -45,7 +45,7 @@ message.channel.send(embed)
 exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliases: [],
+    aliases: ["help","h","commands","komutlar","y"],
     permLevel: 0
   };
   
