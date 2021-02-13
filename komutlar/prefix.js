@@ -8,6 +8,11 @@ exports.run = async(client, message, args) => {
     let dil = db.fetch(`sunucudili_${message.guild.id}`)
     let prefix1 = args[0] || args[1]
     let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix
+      let bakım = db.fetch(`bakım`)
+  if(bakım == "bakımda") {
+    if(dil=="TR") return message.channel.send(`Bot bakımda!\nLütfen destek sunucumuza gelerek sorunu öğreniniz. Gelmel için ${prefix}davet`)
+    if(dil=="EN") return message.channel.send(`Bot repairing!\nPlease come support server and learn the problem. To come ${prefix}invite`)
+  } else {
     if(dil == "TR") {
        if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`Bu komutu kullanmak için \`Yönetici\` Yetkisine sahip olmalısın.`)
       if(args[0] == "sil") {
@@ -34,7 +39,8 @@ exports.run = async(client, message, args) => {
       message.channel.send(`Your prefix on the server is set to $ {prefix1}.`)
       message.guild.owner.send(`Your prefix on ${message.guild.name} set to $ {prefix1} by ${message.author}.`)
   }
-    }
+  }
+}
 exports.conf = {
     enabled: true,
     guildOnly: false,

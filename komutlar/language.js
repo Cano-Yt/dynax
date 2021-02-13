@@ -5,7 +5,12 @@ const db = require("quick.db")
 
 exports.run = async(client, message, args) => {
     let dil = db.fetch(`sunucudili_${message.guild.id}`)
-
+    let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix
+  let bakım = db.fetch(`bakım`)
+  if(bakım == "bakımda") {
+    if(dil=="TR") return message.channel.send(`Bot bakımda!\nLütfen destek sunucumuza gelerek sorunu öğreniniz. Gelmel için ${prefix}davet`)
+    if(dil=="EN") return message.channel.send(`Bot repairing!\nPlease come support server and learn the problem. To come ${prefix}invite`)
+  } else {
     if(dil == "TR") {
   if(!args[0]) return message.channel.send(`Lütfen bir dil kodu giriniz\nÖrn; TR , EN`)
   if(args[0] == "TR") return message.channel.send(`Zaten türkçe dilinde kullanıyorsunuz.`)
@@ -18,7 +23,8 @@ exports.run = async(client, message, args) => {
   if(args[0] == "EN") return message.channel.send(`You are already using it in English.`)
       if(args[0] !== "TR" || "EN") return message.channel.send(`Please enter a correct language code. TR , EN`)
   }
-}
+  }
+  }
 
 exports.conf = {
     enabled: true,
