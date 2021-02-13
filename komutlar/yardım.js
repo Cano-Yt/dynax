@@ -13,17 +13,32 @@ const embed = new Discord.MessageEmbed()
     .setDescription(`
  \`Prefix : ${prefix}\`
  
-  
+  \`Moderasyon\`
+> **dil**
+
   \`Kayıt Sistemi\`
 > **kız "k" | erkek "e"**
 `)
 .setImage("https://media.discordapp.net/attachments/793827180513198100/810113577511419914/standard.gif")
-.setColor("#FF9933")
+.setColor("#aaffff")
 message.channel.send(embed)
   }
   if(dil == "en") {
-    
-  }
+    const embed = new Discord.MessageEmbed()
+.setTitle("Commands")
+    .setDescription(`
+ \`Prefix : ${prefix}\`
+ 
+  \`Moderation\`
+> **Language**
+
+  \`Register system\`
+> **girl "g"**
+`)
+.setImage("https://media.discordapp.net/attachments/793827180513198100/810113577511419914/standard.gif")
+.setColor("#aaffff")
+message.channel.send(embed)
+    }
 };
 
 

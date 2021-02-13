@@ -58,7 +58,7 @@ ${message.author} **Kayıt sayın:** \`${prefix}kayıtsayı Yazarak görebilirsi
 exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliases: ["k"],
+    aliases: ["k","girl","g"],
     permLevel: 0
   };
   
