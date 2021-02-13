@@ -37,33 +37,7 @@ const log = message => {
 
 
 
-client.on('guildMemberAdd', async member => {
- await member.roles.add(`806480832612270102`) //id yazan yere verilecek rol (unregistered)
- await member.setNickname(`℘ İsim | Yaş`) //yeni gelen kullanıcının adını değiştirme
-let member2 = member.user
-let zaman = new Date().getTime() - member2.createdAt.getTime()
-var user = member2 
-var takizaman = [];
-require("moment-duration-format");
-let zaman1 = new Date().getTime() - user.createdAt.getTime()
-const gecen = moment.duration(zaman1).format(` YY **[Yıl,]** DD **[Gün,]** HH **[Saat,]** mm **[Dakika,]** ss **[Saniye]**`) 
 
-  let message = member.guild.channels.cache.find("806480558044872775") //id yazan kısma kanal id'si [orn: register-chat]
-  
-   const embed = new Discord.MessageEmbed()
-  .setColor("ORANGE")
-  .setTitle("Welcome Fire")
-  .setDescription(`
-Sunucumuza Hoş geldin ${member} 
-Seninle Beraber **${message.guild.memberCount}** Kişiyiz.
-Kaydının Yapılması İçin Sesli Odaya Geçerek Ses Vermen Gerekli.
-<@&806484808817442836> Rolündeki Yetkililer Seninle İlgilenecektir.
-
-Hesap Açılalı: **${gecen}** Olmuş.
-`)
-message.send(`<@member> <@&806484808817442836>`)
-message.send(embed)
-});
 
 client.on("guildMemberAdd", async member => {
   member.roles.add("806480832612270102")
