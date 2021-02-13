@@ -35,8 +35,14 @@ const log = message => {
 ///////////// KOMUTLAR BAŞ
 
 
-//client.on("ready", () => client.channels.cache.get('810145611939840000').send("bot hazır"));
-
+client.on("ready", client => {
+const embed = new Discord.MessageEmbed()
+.setTitle(`Bot uptime edildi`)
+.setDescription(`
+:rocket: 
+`)
+client.channels.cache.get('810145611939840000').send();
+})
 
 
 /*
