@@ -15,7 +15,8 @@
     "fs": "^0.0.2",
     "chalk": "^4.1.0",
     "moment": "^2.29.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "request": "^2.88.2"
   },
   "engines": {
     "node": "12.x"
