@@ -76,11 +76,15 @@ client.on("guildMemberAdd", async member => {
   .setTitle("**Welcome to Fire**")
   .setDescription(`
   Sunucumuza hoş geldin ${member}
-  Seninle beraber **${kanal.guild.memberCount}
-  Kaydının yapılması için Adını ve yaşını yazman yeterli olucaktır.
+  Kaydının yapılması için **Adını ve Yaşını** yazman yeterli olucaktır.
+  <@&806484808817442836> Rolündeki yetkililer seninle ilgilenecektir.
   
-  
+  Seninle beraber
+  **${kanal.guild.memberCount} Kişiyiz
+  **500** Kişi olmaya **${kanal.guild.memberCount - 500}** Kişi kaldı
   `)
+  kanal.send(`<@&806484808817442836> ${member}`)
+  kanal.send(embed)
 })
 
 ////////////// KOMUTLAR SON
