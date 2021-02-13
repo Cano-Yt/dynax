@@ -10,13 +10,20 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 let dil = db.fetch(`sunucudili_${message.guild.id}`)
     require('request')({url: 'https://nekos.life/api/hug', json: true}, (req, res, json) => {
       if(dil == "TR") {
-      if (member) {
+        if(!member) message.channel.send('Sarılmak istediğin kullanıcıyı etiketlemelisin!');
         let embed = new Discord.MessageEmbed()
         .setTitle(message.author.username +" " + member.user.username+ ' Adlı kullanıcıya sarılıyor!')
         .setColor('#363942')
         .setImage(json.url);
         message.channel.send(embed);
-      } else message.channel.send('Sarılmak istediğin kullanıcıyı etiketlemelisin!');
+      }
+      if(dil == "EN") {
+        if(!member) return message.channel.send('You must tag the user you want to hug!');
+        let embed = new Discord.MessageEmbed()
+        .setTitle(message.author.username +" " + member.user.username+ ' Hugs soo cute!')
+        .setColor('#363942')
+        .setImage(json.url);
+        message.channel.send(embed);
       }
     });
 };
