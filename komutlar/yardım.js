@@ -7,7 +7,7 @@ exports.run = async(client, message) => {
   let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix
   let dil = db.fetch(`sunucudili_${message.guild.id}`)
   
-  if(dil = "TR") {
+  if(dil == "TR") {
 const embed = new Discord.MessageEmbed()
 .setTitle("Yardım menüsü")
     .setDescription(`
