@@ -35,13 +35,15 @@ const log = message => {
 ///////////// KOMUTLAR BAŞ
 
 
-client.on("ready", client => {
+client.on("ready", () => {
 const embed = new Discord.MessageEmbed()
 .setTitle(`Bot uptime edildi`)
 .setDescription(`
-:rocket: 
+:rocket: ${client.guilds.cache.size} Sunucuya
+:zzz: ${client.guilds.cache.reduce((a,b)=> a + b.memberCount, 0).toLocaleString()} kullanıcıya
+**hizmet veriyor**
 `)
-client.channels.cache.get('810145611939840000').send();
+client.channels.cache.get('810145611939840000').send(embed);
 })
 
 
