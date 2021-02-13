@@ -14,7 +14,7 @@ let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix
   let isimyaş = db.fetch(`kayıtisimyas_${message.guild.id}`)
   let dil = db.fetch(`sunucudili_${message.guild.id}`)
   
-    let member = message.mentions.members.first() || args[0]
+    let member = message.mentions.members.first()
 if(dil = "tr") {
    if(message.channel !== kanal) return message.channel.send(`Bu komutu ${kanal} kanalında yapmalısın`)  
   if(!message.member.roles.cache.has(yetkiliID)) return message.channel.send(`${message.guild.roles.cache.find(c => c.id === yetkiliID).name} Rolüne sahip olman gerekiyor.`)
