@@ -65,7 +65,7 @@ client.on("guildMemberAdd", async member => {
 */
 client.on("guildCreate", async(client, guild) => {
   db.set(`sunucudili_${guild.id}`, "EN")
-  
+  guild.owner.send(`Botumuzu eklediğiniz için teşekkür ederiz <3\nBotumuzun yarım menüsüne ulaşmak için f!yardım\nPrefix'ini değiştirmek için f!prefix\nDilini değiştirmek için f!dil [TR , EN]\n\n`);
 })
 ////////////// KOMUTLAR SON
 require("./util/eventLoader")(client);
