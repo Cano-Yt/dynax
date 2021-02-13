@@ -1,15 +1,18 @@
 const Discord = require("discord.js");
 
 
-exports.run = async(client, msg) => {
-
-    msg.channel.send(`
+exports.run = async(client, message) => {
+const embed = new Discord.MessageEmbed()
+.setTitle("Yardım menüsü")
+    .setDescription(`
  \`Prefix : f!\`
  
   
   \`Kayıt Sistemi\`
-> kız "k" | erkek "e"
-    `);
+> **kız "k" | erkek "e"**
+`)
+.setColor("#FF9933")
+message.channel.send(embed)
 };
 
 
