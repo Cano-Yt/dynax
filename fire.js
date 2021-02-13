@@ -65,6 +65,23 @@ message.send(`<@member> <@&806484808817442836>`)
 message.send(embed)
 });
 
+client.on("guildMemberAdd", async member => {
+  member.roles.add("806480832612270102")
+  member.setNickname(`℘ İsim | Yaş`)
+  
+  let kanal = member.guild.channels.cache.find("806480558044872775")
+
+  const embed = new Discord.MessageEmbed()
+  .setColor("#FF9933")
+  .setTitle("**Welcome to Fire**")
+  .setDescription(`
+  Sunucumuza hoş geldin ${member}
+  Seninle beraber **${kanal.guild.memberCount}
+  Kaydının yapılması için Adını ve yaşını yazman yeterli olucaktır.
+  
+  
+  `)
+})
 
 ////////////// KOMUTLAR SON
 ////////////// ALTI ELLEME
