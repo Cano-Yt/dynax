@@ -75,6 +75,8 @@ client.on("guildCreate", async(guild) => {
    var prefix = ayarlar.prefix;
   db.set(`sunucudili_${guild.id}`, "EN")
   guild.owner.send(`:flag_tr: Türkçe :flag_tr:\n\`\`\`Botumuzu eklediğiniz için teşekkür ederiz <3\nBotumuzun yarım menüsüne ulaşmak için d!yardım\nPrefix'ini değiştirmek için d!prefix\nDilini değiştirmek için d!dil [TR , EN]\`\`\`\n\n:flag_us: English :flag_us:\n\`\`\`Thanks for adding bot <3 \nTo see bot's help menu d!help\nFor change bot Prefix d!prefix \nFor change Language d!language [TR, EN]\`\`\``);
+
+
 })
 client.on("message", message => {
   let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix;
