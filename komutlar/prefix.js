@@ -17,8 +17,20 @@ exports.run = async(client, message, args) => {
       if(!prefix1) return message.channel.send(`Ayarlamak için bir prefix girmelisiniz.`)
       db.set(`prefix_${message.guild.id}`)
       message.channel.send(`Sunucudaki prefix'iniz ${prefix1} Olarak ayarlanmıştır.`)
-      message.guild.owner.send(`${message.guild.name} Sunucunuzdaki prefix'iniz `)
+      message.guild.owner.send(`${message.guild.name} Sunucunuzdaki prefix'iniz ${message.author} tarafından ${prefix1} olarak ayarlanmıştır.`)
     }
+  if(dil == "EN") {
+          if(args[0] == "delete") {
+        db.delete(`prefix_${message.guild.id}`)
+        message.channel.send(`I deleted my prefix on the server\nNew prefix : ${ayarlar.prefix}`)
+        message.guild.owner.send(`The prefix on ${message.guild.name} has been deleted by ${message.author}!\nNew prefix : ${ayarlar.prefix}`)
+      }
+      if(prefix1 !== "sil") return;
+      if(!prefix1) return message.channel.send(`You must enter a prefix to set it.`)
+      db.set(`prefix_${message.guild.id}`)
+      message.channel.send(`Your prefix on the server is set to $ {prefix1}.`)
+      message.guild.owner.send(`Your prefix on ${message.guild.name} set to $ {prefix1} by ${message.author}.`)
+  }
     }
 exports.conf = {
     enabled: true,
