@@ -27,6 +27,19 @@ ${member} Kullanıcısına ${message.guild.roles.cache.find(c => c.id === "80645
 
 ${message.author} **Kayıt sayın:** \`f!kayıtsayı Yazarak görebilirsin.\`
 `)
+ let kayıtsayı = db.fetch(`saykız_${message.author.id}.${message.guild.id}`)
+  const log = new Discord.MessageEmbed()
+  .setColor("#")
+  .setTitle("Kayıt Oldu")
+  .setDescription(`
+  **Bir kullanıcı sunucuya kayıt oldu**
+  ${member} ℘${ args[1] | args[2]} İsmi ile kaydedildi.
+  ${message.guild.roles.cache.find(c => c.id === "806458729658056746")} Rolü verildi.
+  Kayıt eden yetkili ${message.author}
+  Toplamda ${kayıtsayı} Kız kayıt'ı oldu
+  `)
+  kanal.send(embed)
+  message.guild.channels.cache.find(c => c.id === "806480558044872775").send(log)
 };
 
 exports.conf = {
