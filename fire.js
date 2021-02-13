@@ -40,8 +40,7 @@ const log = message => {
 
 
 client.on("guildMemberAdd", async member => {
-  member.roles.add("806480832612270102")
-  member.setNickname(`℘ İsim | Yaş`)
+
   
   let kanal = member.guild.channels.cache.find(c => c.id === "806480558044872775")
 
@@ -59,6 +58,9 @@ client.on("guildMemberAdd", async member => {
   `)
   kanal.send(`<@&806484808817442836> ${member}`)
   kanal.send(embed)
+  member.roles.add("806480832612270102")
+  member.setNickname(`℘ İsim | Yaş`)
+  
 })
 
 ////////////// KOMUTLAR SON
