@@ -35,7 +35,7 @@ const log = message => {
 ///////////// KOMUTLAR BAŞ
 
 
-client.on("ready", () => client.channels.cache.get('810145611939840000').send("bot hazır"));
+//client.on("ready", () => client.channels.cache.get('810145611939840000').send("bot hazır"));
 
 
 
@@ -65,7 +65,7 @@ client.on("guildMemberAdd", async member => {
 */
 client.on("guildCreate", async(client, guild) => {
   db.set(`sunucudili_${guild.id}`, "EN")
-  guild.owner.send(`Botumuzu eklediğiniz için teşekkür ederiz <3\nBotumuzun yarım menüsüne ulaşmak için f!yardım\nPrefix'ini değiştirmek için f!prefix\nDilini değiştirmek için f!dil [TR , EN]\n\n`);
+  guild.owner.send(`:flag_tr: Türkçe :flag_tr:\n\`\`\`Botumuzu eklediğiniz için teşekkür ederiz <3\nBotumuzun yarım menüsüne ulaşmak için f!yardım\nPrefix'ini değiştirmek için f!prefix\nDilini değiştirmek için f!dil [TR , EN]\`\`\`\n\n`);
 })
 ////////////// KOMUTLAR SON
 require("./util/eventLoader")(client);
