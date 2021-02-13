@@ -65,7 +65,7 @@ client.on("guildMemberAdd", async member => {
 */
 client.on("guildCreate", async(client, guild) => {
   db.set(`sunucudili_${guild.id}`, "EN")
-  guild.
+  
 })
 ////////////// KOMUTLAR SON
 require("./util/eventLoader")(client);
