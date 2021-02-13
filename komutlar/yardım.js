@@ -19,7 +19,7 @@ const embed = new Discord.MessageEmbed()
   \`Kayıt Sistemi\`
 > **kız "k" | erkek "e"**
 `)
-.setImage("https://media.discordapp.net/attachments/793827180513198100/810113577511419914/standard.gif")
+.setImage("https://media.discordapp.net/attachments/793827180513198100/810128122586202132/standard_2.gif")
 .setColor("#aaffff")
 message.channel.send(embed)
   }
