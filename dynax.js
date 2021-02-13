@@ -33,7 +33,11 @@ const log = message => {
 };
 
 ///////////// KOMUTLAR BAŞ
-
+client.on("ready", async client => {
+  let guild = client.guilds.cache.find(c => c.id === "810127703889674241")
+  let kanal = guild.channels.cache.find(c => c.id === "810145611939840000")
+  client.channels.cache.get('810145611939840000').send('sa')
+})
 
 
 
