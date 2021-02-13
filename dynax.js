@@ -33,11 +33,9 @@ const log = message => {
 };
 
 ///////////// KOMUTLAR BAŞ
-client.on("ready", async client => {
-  let guild = client.guilds.cache.find(c => c.id === "810127703889674241")
-  let kanal = guild.channels.cache.find(c => c.id === "810145611939840000")
-  client.channels.cache.get('810145611939840000').send('sa')
-})
+
+
+client.on("ready", () => client.channels.cache.get('810145611939840000').send("bot hazır"));
 
 
 
@@ -65,7 +63,79 @@ client.on("guildMemberAdd", async member => {
   member.setNickname(`℘ İsim | Yaş`)
 })
 */
+client.on('ready', async () => {// Can°B#1308
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  
+  function destructMS(milli) {
+    if (isNaN(milli) || milli < 0) {
+      return null;
+    }
+  
+    var d, h, m, s;
+    s = Math.floor(milli / 1000);
+    m = Math.floor(s / 60);
+    s = s % 60;
+    h = Math.floor(m / 60);
+    m = m % 60;
+    d = Math.floor(h / 24);
+    h = h % 24;
+    var yazi;
+    if (d !== 0) yazi = `${d} gün`;
+    if (h !== 0 && yazi) yazi = yazi + `, ${h} saat`;
+    if (h !== 0 && !yazi) yazi = `${h} saat`;
+    if (m !== 0 && yazi) yazi = yazi + `, ${m} dakika`;
+    if (m !== 0 && !yazi) yazi = `${m} dakika`;
+    if (s !== 0 && yazi) yazi = yazi + `, ${s} saniye`;
+    if (s !== 0 && !yazi) yazi = `${s} saniye`;
+    if (yazi) return yazi;
+    if (!yazi) return `1 saniye`;
+  };
+client.guilds.forEach(async guild => {
+const asd = await db.fetch(`..başladı.${guild.id}`);
+if(asd) {
+const interval = setInterval(async function(){
+const kalanzaman = asd.süre - Date.now()   
+const c = await guild.channels.get(asd.channel).fetchMessage(asd.message);
+if (kalanzaman <= 0) {
+clearInterval(interval)
+await sleep(50)
+const embed = new Discord.RichEmbed()
+  .setAuthor(client.user.username, client.user.avatarURL)
+  .setTimestamp()
+  .setFooter(`Çekiliş Sistemi`)
+  .setDescription(`**Ödül**: ${asd.ödül}
 
+Başlatan: ${asd.host}`)
+.setTimestamp(asd.süre)
+  .setTitle(`Çekiliş bitti!`)
+c.edit(embed)
+db.delete(`çk.${c.id}`)
+db.delete(`ödü.${c.id}`)
+db.delete(`ma.${c.id}`)
+const asdd = await c.reactions.get('🎉').fetchUsers({limit: c.reactions.get('🎉').count})
+guild.channels.get(asd.channel).send(`Tebrikler, ${asdd.random()}! Bizden ${asd.ödül} kazandın.
+Ödülünü alabilmek için: ${asd.host1} kişisine ulaş.`)
+db.delete(`..başladı.${guild.id}`);
+} else {
+const kalanzamanyazi = destructMS(kalanzaman)
+const embed2 = new Discord.RichEmbed()
+  .setAuthor(client.user.username, client.user.avatarURL)
+  .setTimestamp()
+  .setFooter(`Çekiliş Sistemi`)
+embed2.setDescription(`**Ödül**: ${asd.ödül}
+
+Başlatan: ${asd.host}
+Kalan zaman: ${kalanzamanyazi}
+
+Katılmak için 🎉 tepkisine tıklayın.`)
+c.edit(embed2)
+                }
+}, 5000)
+}
+})
+})
 ////////////// KOMUTLAR SON
 require("./util/eventLoader")(client);
 
