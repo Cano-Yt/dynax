@@ -8,8 +8,14 @@ const fs = require('fs');
 const moment = require('moment');
 
 
-var prefix = ayarlar.prefix;
+//Bilgiler
+/*
+"Prefix ayarlamak için client.on veya exports.run Altına " let prefix = db.fetch(`prefix_${message.guild.id} || ayarlar.prefix; "" Koyun"
 
+Bir rol'ü sunucuda bulmak için Komut'a "${message.guild.roles.cache.find(c => c.id === "Rol İD")}" Koyun
+Bir kanal'ı sunucuda bulmak için Komut'a "message.guild.channels.cache.find(c => c.id === "Kanal İD")" Koyun
+
+*/
 const http = require("http");
 const express = require("express");
 const app = express();
@@ -31,22 +37,15 @@ const log = message => {
 
 
 
-
-
-
-
-
-
-
-
+/*
 client.on("guildMemberAdd", async member => {
-
+  var prefix = db.fetch(`prefix_${message.guild.id} || ayarlar.prefix;
   
   let kanal = member.guild.channels.cache.find(c => c.id === "806480558044872775")
 
   const embed = new Discord.MessageEmbed()
   .setColor("#FF9933")
-  .setTitle("**Welcome to Fire**")
+  .setTitle("**Welcome to ${member.guild.name}**")
   .setDescription(`
   Sunucumuza hoş geldin ${member}
   Kaydının yapılması için **Adını ve Yaşını** yazman yeterli olucaktır.
@@ -60,11 +59,10 @@ client.on("guildMemberAdd", async member => {
   kanal.send(embed)
   member.roles.add("806480832612270102")
   member.setNickname(`℘ İsim | Yaş`)
-  
 })
+*/
 
 ////////////// KOMUTLAR SON
-////////////// ALTI ELLEME
 require("./util/eventLoader")(client);
 
 
