@@ -9,6 +9,7 @@ exports.run = async(client, message, args) => {
    if(message.channel !== kanal) return message.channel.send(`Bu komutu ${kanal} kanalında yapmalısın`)  
   if(!message.member.roles.cache.has("806484808817442836")) return message.channel.send(`<@$806484808817442836> Rolüne sahip olman gerekiyor.`)
     if(!member) return message.channel.send(`Bir kullanıcı etiketleyerek yapmalsın.`)
+  if(!member.roles.cache.has("806480832612270102")) return message.channel.send(`Etiketlediğin kullanıcıda ${message.guild.roles.cache.find(c => c.id === "806480832612270102").name} Rolü olması lazım.`)
     let isim;
 if(args[1]) return message.channel.send(`İsim girmelisin`)
 if(args[2]) return message.channel.send(`Yaş girmelisin`)
@@ -39,7 +40,7 @@ ${message.author} **Kayıt sayın:** \`f!kayıtsayı Yazarak görebilirsin.\`
   Toplamda ${kayıtsayı} Kız kayıt'ı oldu
   `)
   kanal.send(embed)
-  message.guild.channels.cache.find(c => c.id === "806480558044872775").send(log)
+  message.guild.channels.cache.find(c => c.id === "809400719778119741").send(log)
 };
 
 exports.conf = {
