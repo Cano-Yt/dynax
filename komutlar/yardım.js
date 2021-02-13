@@ -7,7 +7,7 @@ exports.run = async(client, message) => {
   let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix
   let dil = db.fetch(`sunucudili_${message.guild.id}`)
   
-  if(dil = "tr") {
+  if(dil = "TR") {
 const embed = new Discord.MessageEmbed()
 .setTitle("Yardım menüsü")
     .setDescription(`
@@ -23,7 +23,7 @@ const embed = new Discord.MessageEmbed()
 .setColor("#aaffff")
 message.channel.send(embed)
   }
-  if(dil == "en") {
+  if(dil == "EN") {
     const embed = new Discord.MessageEmbed()
 .setTitle("Commands")
     .setDescription(`
