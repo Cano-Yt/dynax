@@ -5,7 +5,7 @@ const db = require("quick.db")
 
 exports.run = async(client, message, args) => {
     let dil = db.fetch(`sunucudili_${message.guild.id}`)
-db.set(`sunucudili_${message.guild.id}`, "EN")
+
     if(dil == "TR") {
   if(!args[0]) return message.channel.send(`Lütfen bir dil kodu giriniz\nÖrn; TR , EN`)
   if(args[0] == "TR") return message.channel.send(`Zaten türkçe dilinde kullanıyorsunuz.`)
