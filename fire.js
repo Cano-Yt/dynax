@@ -43,7 +43,7 @@ client.on("guildMemberAdd", async member => {
   member.roles.add("806480832612270102")
   member.setNickname(`℘ İsim | Yaş`)
   
-  let kanal = member.guild.channels.cache.find("806480558044872775")
+  let kanal = member.guild.channels.cache.find(c => c.id === "806480558044872775")
 
   const embed = new Discord.MessageEmbed()
   .setColor("#FF9933")
