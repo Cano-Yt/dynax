@@ -1,8 +1,17 @@
+const ayarlar = require("../ayarlar.json")
 const Discord = require("discord.js");
 const db = require("quick.db")
 
 
 exports.run = async(client, message, args) => {
+/*
+let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix
+  let kanal = db.fetch(`kayıtkanal_${message.guild.id}`)
+  let kayıtsız = db.fetch(`kayıtsız_${message.guild.id}`)
+  let kızID = db.fetch(`kız_${message.guild.id}`)
+  let yetkili = db.fetch(`kayıtyetkili_${message.guild.id}`)
+  let isimyaş = db.fetch(`kayıtisimyas_${message.guild.id}`)
+  */
     let kanal = message.guild.channels.cache.find(c => c.id === "806480558044872775")
     let member = message.mentions.members.first() || args[0]
 

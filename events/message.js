@@ -1,5 +1,7 @@
 const ayarlar = require("../ayarlar.json");
+const db = reuire("quick.db")
 module.exports = async message => {
+const prefix = require(`prefix_${message.guild.id`) || ayarlar.prefix
   let client = message.client;
   let prefix = ayarlar.prefix;
   if (message.author.bot) return;
