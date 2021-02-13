@@ -1,24 +1,32 @@
 const Discord = require('discord.js');
-
+const db = require("quick.db")
 
 exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
 const ayarlar = require('../ayarlar.json')
 let prefix = await require('quick.db').fetch(`prefix.${message.guild.id}`) || ayarlar.prefix
-
-  
-    let member = message.mentions.members.first();
-
-    require('request')({url: 'https://nekos.life/api/kiss', json: true}, (req, res, json) => {
-      if (member) {
+let member = message.mentions.members.first();
+let dil = db.fetch(`sunucudili_${message.guild.id}`)
+require('request')({url: 'https://nekos.life/api/kiss', json: true}, (req, res, json) => {
+       
+  if(dil == "TR") {
         if(!member) return message.reply('Öpmek istediğin kullanıcıyı etiketlemelisin!');
-        if(member == message.author) return message.channel.send(Ke)
+        if(member == message.author) return message.channel.send("kendini öpmeyimi planlıyorsun ?! Hayır hayır bu olamaz")
         let embed = new Discord.MessageEmbed()
         .setTitle(message.author.username +" " + member.user.username+ ' Adlı kullanıcıyı Öpüyor!')
         .setColor('#363942')
         .setImage(json.url);
         message.channel.send(embed);
-      }
-    });
+  }
+  if(dil == "EN") {
+            if(!member) return message.reply('You have to tag the user you want to kiss!');
+        if(member == message.author) return message.channel.send("You are planning on kissing yourself ?! No no this can't be")
+        let embed = new Discord.MessageEmbed()
+        .setTitle(message.author.username +" " + member.user.username+ ' Kissing :kiss:!')
+        .setColor('#363942')
+        .setImage(json.url);
+        message.channel.send(embed);
+  }
+});
 
 };
 
