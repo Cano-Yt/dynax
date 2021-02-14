@@ -34,7 +34,7 @@ const log = message => {
 
 ///////////// KOMUTLAR BAŞ
 
-
+/*
 client.on("ready", () => {
 const embed = new Discord.MessageEmbed()
 .setTitle(`Bot uptime edildi`)
@@ -45,7 +45,7 @@ const embed = new Discord.MessageEmbed()
 `)
 client.channels.cache.get('810145611939840000').send(embed);
 })
-
+*/
 
 /*
 client.on("guildMemberAdd", async member => {
