@@ -14,9 +14,18 @@ exports.run = async(client, message, args) => {
     let sayı = args[0] 
     let kanal = message.mentions.channels.first()
     let sayı2 = message.guild.memberCount
+    if(dil == "TR") {
     if(!sayı) return message.channel.send(`Lütfen bir sayı belirleyin.`)
     if(sayı > sayı2) return message.channel.send(`Belirlediğin sayı sunucunun toplamından büyük olması lazım.\n\`Sunucunun toplamı : ${sayı2}\``)
-    
+    }
+    if(dil == "EN") {
+    if(!sayı) return message.channel.send(`Please enter number`)
+    if(sayı > sayı2) return message.channel.send(`The number you have set must be greater than the total of the server.\n\`Sever total : ${sayı2}\``)    
+    }
+    db.set(`sayacsayı_${message.guild.id}`, sayı)
+    db.set(`sayackanal_${message.guild.id}`, kanal.id)
+    if(dil == "TR") {return message.channel.send(`Sayacınız ayarlanmıştır.`)}
+    if(dil == "EN") {return message.channel.send(`Counter has set.`)}
   }
 }
 exports.conf = {
