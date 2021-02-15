@@ -16,7 +16,6 @@ exports.run = async(client, message, args) => {
     let otorols = db.fetch(`otoRol_${message.guild.id}`)
     if(dil == "TR") {
       if(args[0] == "sil") {
-
         db.delete(`otoRol_${message.guild.id}`)
         db.delete(`otorolkanal_${message.guild.id}`)
         return message.channel.send(`Otorol sistemi silinmiştir.`)
@@ -33,7 +32,6 @@ exports.run = async(client, message, args) => {
     }
    if(dil == "EN") {
            if(args[0] == "delete") {
-             if(otorols) return message.channel.send(`Autorole system not already set`)
         db.delete(`otoRol_${message.guild.id}`)
         db.delete(`otorolkanal_${message.guild.id}`)
         return message.channel.send(`Autorole system has deleted.`)
