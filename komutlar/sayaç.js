@@ -22,7 +22,8 @@ exports.run = async(client, message, args) => {
        return message.channel.send(`Sayaç'ınızı sildim.`)
     }
     if(!sayı) return message.channel.send(`Lütfen bir sayı belirleyin.`)
-    if(sayı > sayı2) return message.channel.send(`Belirlediğin sayı sunucunun toplamından büyük olması lazım.\n\`Sunucunun toplamı : ${sayı2}\``)
+    if(sayı < sayı2) return message.channel.send(`Belirlediğin sayı sunucunun toplamından büyük olması lazım.\n\`Sunucunun toplamı : ${sayı2}\``)
+    if(!kanal) return message.channel.send(`Lütfen bir kanal belirtiniz.`)
     }
     if(dil == "EN") {
     if(args[0] == "delete") {
@@ -32,6 +33,7 @@ exports.run = async(client, message, args) => {
     }
     if(!sayı) return message.channel.send(`Please enter number`)
     if(sayı > sayı2) return message.channel.send(`The number you have set must be greater than the total of the server.\n\`Sever total : ${sayı2}\``)    
+    if(!kanal) return message.channel.send(`Please tag the channel.`)
     }
     db.set(`sayacsayı_${message.guild.id}`, sayı)
     db.set(`sayackanal_${message.guild.id}`, kanal.id)

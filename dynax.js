@@ -105,6 +105,24 @@ client.on("guildMemberAdd", async member => {
   let dil = db.fetch(`sunucudili_${member.guild.id}`)
   if (!sayı || !kanal) return;
   let sonuç = sayı - member.guild.memberCount;
+  if(dil == "TR") {
+    const embed = new Discord.MessageEmbed()
+    .setTitle(`${client.user.username} - Sayaç sistemi`)
+    .setDescription(`
+    Sunucuya ${member} katıldı.
+    **${sayı}** kişi olmamıza {sonuç}** kişi kaldı.
+    Toplamda **${member.guild.memberCount}** kişiyiz.
+    `)
+  }
+  if(dil == "EN") {
+    const embed = new Discord.MessageEmbed()
+    .setTitle(`${client.user.username} - Counter system`)
+    .setDescription(`
+    ${member} joined the server.
+    There are **${sonuç}** people left for us to be **${sayı}** member.
+    We have total **${member.guild.memberCount}** member.
+    `)
+  }
   return;
 })
 
@@ -116,6 +134,21 @@ client.on("guildMemberRemove", async member => {
   let sonuç = sayı - member.guild.memberCount;
   if(dil == "TR") {
     const embed = new Discord.MessageEmbed()
+    .setTitle(`${client.user.username} - Sayaç sistemi`)
+    .setDescription(`
+    Sunucudan ${member} ayrıldı.
+    **${sayı}** kişi olmamıza {sonuç}** kişi kaldı.
+    Toplamda **${member.guild.memberCount}** kişiyiz.
+    `)
+  }
+  if(dil == "EN") {
+    const embed = new Discord.MessageEmbed()
+    .setTitle(`${client.user.username} - Counter system`)
+    .setDescription(`
+    ${member} leaved the server.
+    There are **${sonuç}** people left for us to be **${sayı}** member.
+    We have total **${member.guild.memberCount}** member.
+    `)
   }
   return;
 })
