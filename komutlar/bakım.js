@@ -8,18 +8,14 @@ if (message.author.id !== "351008627726876692" && message.author.id !== "7862404
 message.channel.send(`Bakım al/çıkar`)
 
   let bakım = db.fetch(`bakım`)
-  if(bakım !== "bakımda") {
   if(args[0] == "al") {
   db.set(`bakım`, "bakımda")
     message.channel.send(`Botu bakıma aldım.`)
   }
-    if(bakım == "bakımda") {
       if(args[0] == "çıkar"){
         db.delete(`bakım`, "bakımda")
         message.channel.send(`Botu bakımdan çıkardım artık kullanılabilir.`)
       }
-    }
-}
       }
 
 exports.conf = {
