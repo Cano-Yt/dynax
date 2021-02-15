@@ -102,14 +102,9 @@ return client.channels.cache.get(kanal).send(embed1)
 })
 
 client.on("message", message => {
-
-let emoji = client.emojis.cache.get('810899383179542578')
   let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix;
   if(message.content.toLowerCase() === "prefix") {
     message.channel.send(`**Prefix : **\`${prefix}\``)
-    if(message.content === "sa") {
-      return message.channel.send(`${emoji}`)
-    }
   }
 })
 client.on("guildCreate", guild => {
