@@ -36,7 +36,6 @@ let bakım = db.fetch(`bakım`)
         db.set(`otorolkanal_${message.guild.id}`, kanal.id)
         message.channel.send(`Automatic role give and message sent system has set.`)
       }
-   
   }
 }
 }

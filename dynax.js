@@ -89,18 +89,29 @@ client.on("guildMemberAdd", async member => {
   `)
   }
   if(dil == "EN") {
-      const embed = new Discord.MessageEmbed()
+      const embed1 = new Discord.MessageEmbed()
   .setTitle(`${client.user.username} - Otorol sitemi`)
   .setDescription(`
-  ${member} joined the server. Welcome.
+  ${member} Named member joined the server. Welcome.
   ${rol2} Named role was give a role.
   With your join we have total ${member.guild.memberCount} Person!
   `)
   }
   if(!rol) return;
   if(rol) {
-    member.role.add
+    member.roles.add(rol)
     if(kanal) {
+    let kanal2 = member.guild.channels.cache.find(c => c.id === `${kanal}`)
+  if(dil == "TR") {
+  const embed12 = new Discord.MessageEmbed()
+  .setTitle(`${client.user.username} - Otorol sitemi`)
+  .setDescription(`
+  Sunucuya ${member} Adlı üye katıldı. Hoş geldin.
+  ${rol2} Adlı rol üyeye verildi.
+  Senin gelmenle ${member.guild.memberCount} Kişi olduk!
+  `)
+  kanal2.send(embed12)
+  }
       
     }
   } 
