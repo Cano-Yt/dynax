@@ -13,14 +13,27 @@ vip
 altın üye
 */
 if(!member) return message.channel.send(`Bir üye etiketlemelisin veya id yazmalısın`)
-        if(args[1]) {
+  let msg;
+  if(args[1]) {
    const msg = args.slice(1).join(' '); 
-} else {
-  
 }
-  if(msg !== "sahip" || "vip" || "altın üye") {
+if (msg !== "sahip" || msg !== "vip" || msg !== "altın üye") {
     message.channel.send(`Lütfen etiketlediğin üyeye düzgün bir yetki ver \nvip veya altın üye yazmalısın.`)
   } else {
-    db.set(`rank_${member.id}`, args[1])
+    db.set(`rank_${member.id}`, msg)
+    message.channel.send(`${member} adlı üyeye ${msg} rank'ını verdim.`)
   }
 }
+exports.conf = {
+  enabled: true,
+  aliases: [],
+  guildOnly: false,
+  permLevel: 'User'
+};
+
+exports.help = {
+  name: 'rank-ver',
+  type: 'Eğlence',
+  description: 'Bir kişiyi okşarsınız!',
+  usage: 'okşa '
+};
