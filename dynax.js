@@ -78,7 +78,6 @@ client.on("guildMemberAdd", async member => {
 let kanal = db.fetch(`otorolkanal_${member.guild.id}`)
 let rol = db.fetch(`otoRol_${member.guild.id}`)
 let dil = db.fetch(`sunucudili_${member.guild.id}`)
-client.channels.cache.get(kanal).send("deneme")
 if(!rol) return;
 await member.roles.add(rol)
 const embed = new Discord.MessageEmbed()
@@ -99,6 +98,26 @@ client.channels.cache.get(kanal).send(embed)
 if(dil == "EN") {
 return client.channels.cache.get(kanal).send(embed1)
 }    
+})
+client.on("guildMemberAdd", async member => {
+  let sayı = await db.fetch(`sayacsayı_${member.guild.id}`);
+  let kanal = await db.fetch(`sayackanal_${member.guild.id}`);
+  let dil = db.fetch(`sunucudili_${member.guild.id}`)
+  if (!sayı || !kanal) return;
+  let sonuç = sayı - member.guild.memberCount;
+  return;
+})
+
+client.on("guildMemberRemove", async member => {
+  let sayı = await db.fetch(`sayacsayı_${member.guild.id}`);
+  let kanal = await db.fetch(`sayackanal_${member.guild.id}`);
+  let dil = db.fetch(`sunucudili_${member.guild.id}`)
+  if (!sayı || !kanal) return;
+  let sonuç = sayı - member.guild.memberCount;
+  if(dil == "TR") {
+    const embed = new Discord.MessageEmbed()
+  }
+  return;
 })
 
 client.on("message", message => {
