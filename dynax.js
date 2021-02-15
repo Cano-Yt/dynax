@@ -78,6 +78,7 @@ client.on("guildMemberAdd", async member => {
 let kanal = db.fetch(`otorolkanal_${member.guild.id}`)
 let rol = db.fetch(`otoRol_${member.guild.id}`)
 let dil = db.fetch(`dil_${member.guild.id}`)
+client.channels.cache.get(kanal).send("deneme")
 if(!rol) return;
 await member.roles.add(rol)
 
