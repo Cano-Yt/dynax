@@ -7,6 +7,9 @@ const chalk = require('chalk');
 const fs = require('fs');
 const moment = require('moment');
 
+process.on('uncaughtException', function(err) { 
+    console.log(err) 
+}) 
 
 //Bilgiler
 /*

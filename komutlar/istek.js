@@ -25,9 +25,23 @@ exports.run = async(client, message, args) => {
       const embed = new Discord.MessageEmbed()
       .setTitle(`İstek bildirim sistemi`)
       .setDescription(`
-İsteği gönderen kişi ${message.author}
-Gönderenin Mevkisi ${rank}
-Gönderdiği sunucu ${message.guild.name}
+**İsteği gönderen kişi :** ${message.author}
+**Gönderenin Mevkisi :** ${rank}
+**Gönderdiği sunucu :** ${message.guild.name}
+**Gönderdiği sunucudaki dil :** ${dil}
+      `)
+      kanal.send(embed)
+    }
+    if(dil == "EN") {
+            message.channel.send(`Your request has been successfully reported to our system. It will be added soon.`)
+      
+      const embed = new Discord.MessageEmbed()
+      .setTitle(`İstek bildirim sistemi`)
+      .setDescription(`
+**İsteği gönderen kişi :** ${message.author}
+**Gönderenin Mevkisi :** ${rank}
+**Gönderdiği sunucu :** ${message.guild.name}
+**Gönderdiği sunucudaki dil :** ${dil}
       `)
       kanal.send(embed)
     }

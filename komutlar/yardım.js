@@ -16,10 +16,15 @@ const embed = new Discord.MessageEmbed()
 .setTitle("Yardım menüsü")
     .setDescription(`
  \`Prefix : ${prefix}\`
+ \`Dil : TR | Türkçe\`
  
   \`Moderasyon\`
-> **dil**
- \`Eğlence\`
+> **dil | prefix**
+
+  \`Kullanıcı\`
+> **istek**
+
+  \`Eğlence\`
 > **öp | sarıl | okşa**
 `)
 .setImage("https://media.discordapp.net/attachments/793827180513198100/810128122586202132/standard_2.gif")
@@ -31,9 +36,13 @@ message.channel.send(embed)
 .setTitle("Commands")
     .setDescription(`
  \`Prefix : ${prefix}\`
+ \`Language : EN | English\`
  
   \`Moderation\`
 > **Language | prefix**
+
+  \`User\`
+> **request**
 
   \`Fun\`
 > **kiss | hug | tap**
