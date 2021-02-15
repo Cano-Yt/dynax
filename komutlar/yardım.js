@@ -19,7 +19,7 @@ const embed = new Discord.MessageEmbed()
  \`Dil : TR | Türkçe\`
  
   \`Moderasyon\`
-> **dil | prefix**
+> **dil | prefix | otorol**
 
   \`Kullanıcı\`
 > **istek**
@@ -42,7 +42,7 @@ message.channel.send(embed)
  \`Language : EN | English\`
  
   \`Moderation\`
-> **Language | prefix**
+> **Language | prefix | autorole**
 
   \`User\`
 > **request**
