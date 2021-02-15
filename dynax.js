@@ -83,7 +83,7 @@ if(!rol) return;
 if(rol) {
 member.roles.add(rol)
 }
-const kanal2 = member.guild.channels.cache.find(c => c.id === kanal)
+
 if(dil == "TR") {
 const embed = new Discord.MessageEmbed()
 .setTitle(`${client.user.username} - Otorol sitemi`)
@@ -91,7 +91,7 @@ const embed = new Discord.MessageEmbed()
 Sunucuya ${member} Adlı üye katıldı. Hoş geldin.
 ${rol2} Adlı rol üyeye verildi.
 Senin gelmenle ${member.guild.memberCount} Kişi olduk!`)
-member.guild.channels.cache.find(c => c.id === kanal).send(embed)
+member.guild.channels.cache.get(kanal).send(embed)
 }
 if(dil == "EN") {
 const embed1 = new Discord.MessageEmbed()
@@ -100,7 +100,7 @@ const embed1 = new Discord.MessageEmbed()
 ${member} Named member joined the server. Welcome.
 ${rol2} Named role was give a role.
 With your join we have total ${member.guild.memberCount} Person!`)
-member.guild.channels.cache.find(c => c.id === kanal).send(embed1)
+member.guild.channels.cache.get(kanal).send(embed1)
 
 }
           
