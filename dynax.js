@@ -79,7 +79,7 @@ let kanal = db.fetch(`otorolkanal_${member.guild.id}`)
 let rol = db.fetch(`otoRol_${member.guild.id}`)
 let dil = db.fetch(`dil_${member.guild.id}`)
 if(!rol) return;
-member.roles.add(rol)
+await member.roles.add(rol)
 
 if(dil == "TR") {
 const embed = new Discord.MessageEmbed()
