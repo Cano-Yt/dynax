@@ -90,7 +90,7 @@ const embed = new Discord.MessageEmbed()
 Sunucuya ${member.user.tag} Adlı üye katıldı. Hoş geldin.
 <@${rol}> Adlı rol üyeye verildi.
 Senin gelmenle ${member.guild.memberCount} Kişi olduk!`)
-return member.guild.channels.cache.get(kanal).send(embed) 
+return client.channels.cache.get(kanal).send(embed) 
 }
 if(dil == "EN") {
 const embed1 = new Discord.MessageEmbed()
@@ -101,7 +101,7 @@ const embed1 = new Discord.MessageEmbed()
 ${member.user.tag} Named member joined the server. Welcome.
 <@${rol}> Named role was give a role.
 With your join we have total ${member.guild.memberCount} Person!`)
-return member.guild.channels.cache.get(kanal).send(embed1)
+return client.channels.cache.get(kanal).send(embed1)
 }    
 })
 
