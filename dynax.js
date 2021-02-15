@@ -78,11 +78,23 @@ client.on("guildMemberAdd", async member => {
   let kanal = db.fetch(`otorolkanal_${member.guild.id}`)
   let rol = db.fetch(`otoRol_${member.guild.id}`)
   let dil = db.fetch(`dil_${member.guild.id}`)
+  let rol2 = member.guild.roles.cache.find(c => c.id === `${rol}`)
   if(dil == "TR") {
   const embed = new Discord.MessageEmbed()
   .setTitle(`${client.user.username} - Otorol sitemi`)
   .setDescription(`
-  Sunucuya ${member}
+  Sunucuya ${member} Adlı üye katıldı. Hoş geldin.
+  ${rol2} Adlı rol üyeye verildi.
+  Senin gelmenle ${member.guild.memberCount} Kişi olduk!
+  `)
+  }
+  if(dil == "EN") {
+      const embed = new Discord.MessageEmbed()
+  .setTitle(`${client.user.username} - Otorol sitemi`)
+  .setDescription(`
+  ${member} joined the server. Welcome.
+  ${rol2} Named role was give a role.
+  With your join we have total ${member.guild.memberCount} Person!
   `)
   }
   if(!rol) return;
