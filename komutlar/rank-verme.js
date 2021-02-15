@@ -16,11 +16,14 @@ if(!member) return message.channel.send(`Bir üye etiketlemelisin veya id yazmal
   let msg;
   if(args[1]) {
    const msg = args.slice(1).join(' '); 
+} else {
+  return message.channel.send("s")
 }
 if (msg && "sahip" || msg && "vip" || msg && "altın üye") {
     message.channel.send(`Lütfen etiketlediğin üyeye düzgün bir yetki ver \nvip veya altın üye yazmalısın.`)
   } else {
-    db.set(`rank_${member.id}`, msg)
+    msg = `${msg}`
+    db.set(`rank_${member.id}`, msg.toString())
     message.channel.send(`${member} adlı üyeye ${msg} rank'ını verdim.`)
   }
 }
