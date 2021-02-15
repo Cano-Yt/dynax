@@ -17,7 +17,7 @@ if(!member) return message.channel.send(`Bir üye etiketlemelisin veya id yazmal
   if(args[1]) {
    const msg = args.slice(1).join(' '); 
 }
-if (msg !== "sahip" || msg !== "vip" || msg !== "altın üye") {
+if (msg && "sahip" || msg && "vip" || msg && "altın üye") {
     message.channel.send(`Lütfen etiketlediğin üyeye düzgün bir yetki ver \nvip veya altın üye yazmalısın.`)
   } else {
     db.set(`rank_${member.id}`, msg)
