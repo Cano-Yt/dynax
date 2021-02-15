@@ -6,7 +6,6 @@ const db = require("quick.db")
 exports.run = async(client, message, args) => {
     let dil = db.fetch(`sunucudili_${message.guild.id}`)
     let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix    
-    let rank = db.fetch(`rank_${message.author.id}`) || "Yok"
     let kanal = message.guild.channels.cache.find(c => c.id === "810750526106763324")
       let bakım = db.fetch(`bakım`) 
       if(bakım == "bakımda") {
