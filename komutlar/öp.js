@@ -15,7 +15,7 @@ require('request')({url: 'https://nekos.life/api/kiss', json: true}, (req, res, 
        
   if(dil == "TR") {
         if(!member) return message.reply('Öpmek istediğin kullanıcıyı etiketlemelisin!');
-        if(member == message.author) return message.channel.send("kendini öpmeyimi planlıyorsun ?! Hayır hayır bu olamaz")
+        if(message.author.id == member.user.id) return message.channel.send("kendini öpmeyimi planlıyorsun ?! Hayır hayır bu olamaz")
         let embed = new Discord.MessageEmbed()
         .setTitle(message.author.username +" " + member.user.username+ ' Adlı kullanıcıyı Öpüyor!')
         .setColor('#aaffff')

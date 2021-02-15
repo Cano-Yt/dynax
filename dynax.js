@@ -77,31 +77,26 @@ client.on("guildMemberAdd", async member => {
 client.on("guildMemberAdd", async member => {
 let kanal = db.fetch(`otorolkanal_${member.guild.id}`)
 let rol = db.fetch(`otoRol_${member.guild.id}`)
-let dil = db.fetch(`dil_${member.guild.id}`)
+let dil = db.fetch(`sunucudili_${member.guild.id}`)
 client.channels.cache.get(kanal).send("deneme")
 if(!rol) return;
 await member.roles.add(rol)
-
-if(dil == "TR") {
 const embed = new Discord.MessageEmbed()
-
-
 .setTitle(`${client.user.username} - Otorol sitemi`)
 .setDescription(`
-Sunucuya ${member.user.tag} Adlı üye katıldı. Hoş geldin.
-<@${rol}> Adlı rol üyeye verildi.
+Sunucuya ${member} Adlı üye katıldı. Hoş geldin.
+<@&${rol}> Adlı rol üyeye verildi.
 Senin gelmenle ${member.guild.memberCount} Kişi olduk!`)
-return client.channels.cache.get(kanal).send(embed) 
+const embed1 = new Discord.MessageEmbed()
+.setTitle(`${client.user.username} - Otorol sitemi`)
+.setDescription(`
+${member} Named member joined the server. **Welcome.**
+<@&${rol}> Named role was give a role.
+With your join we have total **${member.guild.memberCount}** Person!`)
+if(dil == "TR") {
+client.channels.cache.get(kanal).send(embed)
 }
 if(dil == "EN") {
-const embed1 = new Discord.MessageEmbed()
-
-
-.setTitle(`${client.user.username} - Otorol sitemi`)
-.setDescription(`
-${member.user.tag} Named member joined the server. Welcome.
-<@${rol}> Named role was give a role.
-With your join we have total ${member.guild.memberCount} Person!`)
 return client.channels.cache.get(kanal).send(embed1)
 }    
 })
