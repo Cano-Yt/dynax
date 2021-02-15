@@ -81,9 +81,11 @@ let dil = db.fetch(`dil_${member.guild.id}`)
 let rol2 = member.guild.roles.cache.find(c => c.id === `${rol}`)
 if(!rol) return;
 if(rol) {
+
 member.roles.add(rol)
+  member.guild.channels.cache.find(kanal).send("deneme")
 }
-if(kanal) {
+/*
 const kanal2 = member.guild.channels.cache.find(kanal)
 if(dil == "TR") {
 const embed = new Discord.MessageEmbed()
@@ -102,8 +104,9 @@ ${member} Named member joined the server. Welcome.
 ${rol2} Named role was give a role.
 With your join we have total  Person!`)
 kanal2.send('sa')
+
 }
-}
+          */
 })
 
 client.on("message", message => {
