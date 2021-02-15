@@ -21,7 +21,7 @@ message.channel.send(`Bakım al/çıkar`)
 exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliases: [],
+    aliases: ["repair"],
     permLevel: 0
   };
   

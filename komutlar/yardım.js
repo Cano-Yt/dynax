@@ -26,6 +26,9 @@ const embed = new Discord.MessageEmbed()
 
   \`Eğlence\`
 > **öp | sarıl | okşa**
+  
+  \`Sahip\`
+> **bakım**
 `)
 .setImage("https://media.discordapp.net/attachments/793827180513198100/810128122586202132/standard_2.gif")
 .setColor("#aaffff")
@@ -46,6 +49,9 @@ message.channel.send(embed)
 
   \`Fun\`
 > **kiss | hug | tap**
+
+  \`Owner\`
+> **repair**
 `)
 .setImage("https://media.discordapp.net/attachments/793827180513198100/810113577511419914/standard.gif")
 .setColor("#aaffff")

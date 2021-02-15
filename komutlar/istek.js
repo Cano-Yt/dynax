@@ -13,8 +13,9 @@ exports.run = async(client, message, args) => {
             if(dil=="TR") return message.channel.send(`Bot bakımda!\nLütfen destek sunucumuza gelerek sorunu öğreniniz. Gelmel için ${prefix}davet`)
     if(dil=="EN") return message.channel.send(`Bot repairing!\nPlease come support server and learn the problem. To come ${prefix}invite`)
   } else {
+    let istek;
       if(args[0]) {
-   let istek = args.slice(0).join(' '); 
+   istek = args.slice(0).join(' '); 
 } else {
   if(dil = "TR") {return message.channel.send(`Lütfen isteğinizi yazınız.`)}
   if(dil = "EN") {return message.channel.send(`Please write your request.`)}
@@ -26,12 +27,13 @@ exports.run = async(client, message, args) => {
       .setTitle(`İstek bildirim sistemi`)
       .setDescription(`
 **İsteği gönderen kişi :** ${message.author}
-**Gönderenin Mevkisi :** ${rank}
 **Gönderdiği sunucu :** ${message.guild.name}
 **Gönderdiği sunucudaki dil :** ${dil}
+**Kullanıcının isteği :**
+${istek}
       `)
       kanal.send(embed)
-    }
+    } 
     if(dil == "EN") {
             message.channel.send(`Your request has been successfully reported to our system. It will be added soon.`)
       
@@ -39,9 +41,10 @@ exports.run = async(client, message, args) => {
       .setTitle(`İstek bildirim sistemi`)
       .setDescription(`
 **İsteği gönderen kişi :** ${message.author}
-**Gönderenin Mevkisi :** ${rank}
 **Gönderdiği sunucu :** ${message.guild.name}
 **Gönderdiği sunucudaki dil :** ${dil}
+**Kullanıcının isteği :**
+${istek}
       `)
       kanal.send(embed)
     }
