@@ -15,6 +15,10 @@ let bakım = db.fetch(`bakım`)
     let rol = message.mentions.channels.first()
     if(dil == "TR") {
       if(!rol) return message.channel.send(`Otomatik olarak verilecek rolü belirtmelisin`)
+      if(!kanal) {
+        db.set(`otoRol_${message.guild.id}`, rol.id)
+        message.channel.send(`Bir kanal etiketlemediğiniz için Sadece otomatik rol vericektir. mesaj atmıyacaktır.`)
+      }
     }
   }
 }
