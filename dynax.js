@@ -91,8 +91,8 @@ const embed = new Discord.MessageEmbed()
 .setDescription(`
 Sunucuya ${member} Adlı üye katıldı. Hoş geldin.
 ${rol2} Adlı rol üyeye verildi.
-Senin gelmenle ${member.guild.memberCount} Kişi olduk!`)
-kanal2.send(embed)
+Senin gelmenle Kişi olduk!`)
+kanal2.send('sa')
 }
 if(dil == "EN") {
 const embed1 = new Discord.MessageEmbed()
@@ -100,13 +100,14 @@ const embed1 = new Discord.MessageEmbed()
 .setDescription(`
 ${member} Named member joined the server. Welcome.
 ${rol2} Named role was give a role.
-With your join we have total ${member.guild.memberCount} Person!`)
-kanal2.send(embed1)
+With your join we have total  Person!`)
+kanal2.send('sa')
 }
 }
 })
 
 client.on("message", message => {
+  if (!message.guild) return;
   let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix;
   if(message.content.toLowerCase() === "prefix") {
     message.channel.send(`**Prefix : **\`${prefix}\``)
@@ -116,38 +117,6 @@ client.on("guildCreate", guild => {
      var prefix = ayarlar.prefix;
   db.set(`sunucudili_${guild.id}`, "EN")
   guild.owner.send(`:flag_tr: Türkçe :flag_tr:\n\`\`\`Botumuzu eklediğiniz için teşekkür ederiz <3\nBotumuzun yarım menüsüne ulaşmak için d!yardım\nPrefix'ini değiştirmek için d!prefix\nDilini değiştirmek için d!dil [TR , EN]\`\`\`\n\n:flag_us: English :flag_us:\n\`\`\`Thanks for adding bot <3 \nTo see bot's help menu d!help\nFor change bot Prefix d!prefix \nFor change Language d!language [TR, EN]\`\`\``);
-let add = client.channels.get("810145639324581909")
-const eklendim = new Discord.RichEmbed()
-
-.setTitle(`Sunucuya Eklendim`)
-.setTimestamp()
-.setColor("GREEN")
-.setThumbnail(guild.iconURL)
-.addField(`Sunucu İsmi`,guild.name)
-.addField(`Sunucu ID`, guild.id)
-.addField(`Kurucu`,guild.owner.user.tag)
-.addField(`Kurucu ID`,guild.owner.user.id)
-.addField(`Üye Sayısı`,guild.memberCount)
-
-add.send(eklendim)
-
-});
-
-client.on("guildDelete", guild => {
-let remove = client.channels.get("810145639324581909")
-const atildim = new Discord.RichEmbed()
-
-.setTitle(`Sunucudan Atıldım`)
-.setTimestamp()
-.setColor("RED")
-.setThumbnail(guild.iconURL)
-.addField(`Sunucu İsmi`,guild.name)
-.addField(`Sunucu ID`, guild.id)
-.addField(`Kurucu`,guild.owner.user.tag)
-.addField(`Kurucu ID`,guild.owner.user.id)
-.addField(`Üye Sayısı`,guild.memberCount)
-
-remove.send(atildim)
 
 });
 ////////////// KOMUTLAR SON
