@@ -84,7 +84,7 @@ if(rol) {
 member.roles.add(rol)
 }
 if(kanal) {
-const kanal2 = member.guild.channels.cache.find(c => c.id === `${kanal}`)
+const kanal2 = member.guild.channels.cache.find(kanal)
 if(dil == "TR") {
 const embed = new Discord.MessageEmbed()
 .setTitle(`${client.user.username} - Otorol sitemi`)
