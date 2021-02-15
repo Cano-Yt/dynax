@@ -74,6 +74,15 @@ client.on("guildMemberAdd", async member => {
   member.setNickname(`℘ İsim | Yaş`)
 })
 */
+client.on("guildMemberAdd", async member => {
+  let kanal = db.fetch(`otorolkanal_${member.guild.id}`)
+  let rol = db.fetch(`otoRol_${member.guild.id}`)
+  if(!kanal) return;
+  if(!rol) return;
+  if(rol) {
+    member.role.add
+  }
+})
 
 client.on("message", message => {
   let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix;
