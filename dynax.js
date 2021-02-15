@@ -77,11 +77,21 @@ client.on("guildMemberAdd", async member => {
 client.on("guildMemberAdd", async member => {
   let kanal = db.fetch(`otorolkanal_${member.guild.id}`)
   let rol = db.fetch(`otoRol_${member.guild.id}`)
-  if(!kanal) return;
+  let dil = db.fetch(`dil_${member.guild.id}`)
+  if(dil == "TR") {
+  const embed = new Discord.MessageEmbed()
+  .setTitle(`${client.user.username} - Otorol sitemi`)
+  .setDescription(`
+  Sunucuya ${member}
+  `)
+  }
   if(!rol) return;
   if(rol) {
     member.role.add
-  }
+    if(kanal) {
+      
+    }
+  } 
 })
 
 client.on("message", message => {
