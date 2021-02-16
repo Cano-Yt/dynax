@@ -139,7 +139,7 @@ client.on("guildMemberRemove", async member => {
     .setTitle(`${client.user.username} - Sayaç sistemi`)
     .setDescription(`
     Sunucudan ${member} ayrıldı.
-    **${sayı}** kişi olmamıza {sonuç}** kişi kaldı.
+    **${sayı}** kişi olmamıza **${sonuç}** kişi kaldı.
     Toplamda **${member.guild.memberCount}** kişiyiz.
     `)
   }
