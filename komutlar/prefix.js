@@ -6,7 +6,7 @@ const db = require("quick.db")
 exports.run = async(client, message, args) => {
  
     let dil = db.fetch(`sunucudili_${message.guild.id}`)
-    let prefix1 = args[0] || args[1]
+    let prefix1 = args[0]
     let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix
       let bakım = db.fetch(`bakım`)
   if(bakım == "bakımda") {
