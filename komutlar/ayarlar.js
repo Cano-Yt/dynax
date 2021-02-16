@@ -20,13 +20,18 @@ if(bakım == "bakımda") {
     //Sunucuda fetchlediğimiz şeyleri bulalım//
     let otorolRolü = message.guild.roles.cache.find(c => c.id === otorolaktif)
     let otorolkanalı = message.guild.channels.cache.find(c => c.id === otokanal)
+    let sayackanalı = message.guild.channels.cache.find(c => c.id === sayackanal)
     //Mükemmel bir embed tasarımı yapalım//
 if(dil == "TR") {
+let as = "."
 const embed = new Discord.MessageEmbed()
   .setTitle(`${message.guild.name} - Sunucu ayarları`)
+.addField(`Prefix`, `\`${prefix}\``, true)
+.addField(`Dil` , `\`TR | Türkçe\``, true)
 .addField(`Otorol Rolü`, otorolRolü, true)
 .addField(`Otorol kanalı`, otorolkanalı, true)
-
+.addField(`Sayaç sayısı`, `\`${sayacsayı}\``, true)
+.addField(`Sayaç kanalı`, sayackanalı, true)
 message.channel.send(embed)
 }
   
