@@ -23,16 +23,26 @@ if(bakım == "bakımda") {
     let sayackanalı = message.guild.channels.cache.find(c => c.id === sayackanal)
     //Mükemmel bir embed tasarımı yapalım//
 if(dil == "TR") {
-let as = "."
 const embed = new Discord.MessageEmbed()
-  .setTitle(`${message.guild.name} - Sunucu ayarları`)
+.setTitle(`${message.guild.name} - Sunucu ayarları`)
 .addField(`Prefix`, `\`${prefix}\``, true)
 .addField(`Dil` , `\`TR | Türkçe\``, true)
 .addField(`Otorol Rolü`, otorolRolü, true)
 .addField(`Otorol kanalı`, otorolkanalı, true)
 .addField(`Sayaç sayısı`, `\`${sayacsayı}\``, true)
 .addField(`Sayaç kanalı`, sayackanalı, true)
-message.channel.send(embed)
+await message.channel.send(embed)
+}
+if(dil == "EN") {
+const embed = new Discord.MessageEmbed()
+.setTitle(`${message.guild.name} - Server settings`)
+.addField(`Prefix`, `\`${prefix}\``, true)
+.addField(`Language` , `\`EN | English\``, true)
+.addField(`Autorole role`, otorolRolü, true)
+.addField(`Autorole channel`, otorolkanalı, true)
+.addField(`counter number`, `\`${sayacsayı}\``, true)
+.addField(`Counter channel`, sayackanalı, true)
+await message.channel.send(embed)
 }
   
   
