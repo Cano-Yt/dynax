@@ -261,5 +261,5 @@ client.on("error", e => {
   console.log(chalk.bgRed(e.replace(regToken, "that was redacted")));
 });
 
-
+Discord.Constants.DefaultOptions.ws.properties.$browser = 'Discord Android'
 client.login(process.env.token);
