@@ -14,30 +14,20 @@ exports.run = (client, message, args) => {
           max: 1,
           time: 15000,
           errors: ["time"]
-        }).then(collected => {message.channel
-            .send(
-              new Discord.MessageEmbed()
+        }).then(collected => {message.channel.send(new Discord.MessageEmbed()
                 .setColor("aaffff")
                 .setTitle(`${client.user.username} - Reboot`)
                 .setDescription("İzin alındı. Botu yeniden başlatıyorum.")
                 .setFooter(`${client.user.username}`, client.user.avatarURL)
                 .setTimestamp()
-            )
-            .then(msg => {
-              console.log(
-                `BOT : Yeniden Başlatılıyor... [ Başlatan yetkili: ${message.author.tag} ]`
-              );
+            ).then(msg => {
+          console.log(`BOT : Yeniden Başlatılıyor... [ Başlatan yetkili: ${message.author.tag} ]`);
               process.exit(0);
             });
-        })
-        .catch(() => {
-          message.channel.send(
-            new Discord.MessageEmbed()
+        }).catch(() => {message.channel.send(new Discord.MessageEmbed()
               .setColor("aaffff")
               .setTitle(`${client.user.username} - Reboot`)
-              .setDescription(
-                "15 Saniye içinde `evet` demediğin için komut iptal oldu"
-              )
+              .setDescription("15 Saniye içinde `evet` demediğin için komut iptal oldu")
               .setFooter(`${client.user.username}`, client.user.avatarURL)
               .setTimestamp()
           );
