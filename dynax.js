@@ -75,9 +75,9 @@ client.on("guildMemberAdd", async member => {
 })
 */
 client.on("guildMemberAdd", async member => {
-let kanal = db.fetch(`otorolkanal_${member.guild.id}`)
-let rol = db.fetch(`otoRol_${member.guild.id}`)
-let dil = db.fetch(`sunucudili_${member.guild.id}`)
+let kanal = await db.fetch(`otorolkanal_${member.guild.id}`)
+let rol = await db.fetch(`otoRol_${member.guild.id}`)
+let dil = await db.fetch(`sunucudili_${member.guild.id}`)
 if(!rol) return;
 await member.roles.add(rol)
 const embed = new Discord.MessageEmbed()
@@ -93,10 +93,10 @@ ${member} Named member joined the server. **Welcome.**
 <@&${rol}> Named role was give a role.
 With your join we have total **${member.guild.memberCount}** Person!`)
 if(dil == "TR") {
-client.channels.cache.get(kanal).send(embed)
+await client.channels.cache.get(kanal).send(embed);
 }
 if(dil == "EN") {
-return client.channels.cache.get(kanal).send(embed1)
+await client.channels.cache.get(kanal).send(embed1);
 }    
 })
 client.on("guildMemberAdd", async member => {
@@ -113,6 +113,7 @@ client.on("guildMemberAdd", async member => {
     **${sayı}** kişi olmamıza {sonuç}** kişi kaldı.
     Toplamda **${member.guild.memberCount}** kişiyiz.
     `)
+    await client.channels.cache.get(kanal).send(embed);
   }
   if(dil == "EN") {
     const embed = new Discord.MessageEmbed()
@@ -122,6 +123,7 @@ client.on("guildMemberAdd", async member => {
     There are **${sonuç}** people left for us to be **${sayı}** member.
     We have total **${member.guild.memberCount}** member.
     `)
+    await client.channels.cache.get(kanal).send(embed);
   }
   return;
 })
@@ -153,8 +155,8 @@ client.on("guildMemberRemove", async member => {
   return;
 })
 
-client.on("message", message => {
-  let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix;
+client.on("message", async(message) => {
+  let prefix = await db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix;
   if(message.content.toLowerCase() === "prefix") {
     message.channel.send(`**Prefix : **\`${prefix}\``)
   }

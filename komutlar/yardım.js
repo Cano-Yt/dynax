@@ -4,9 +4,9 @@ const ayarlar = require("../ayarlar.json")
 
 
 exports.run = async(client, message) => {
-  let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix
-  let dil = db.fetch(`sunucudili_${message.guild.id}`)
-    let bakım = db.fetch(`bakım`)
+  let prefix = await db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix
+  let dil = await db.fetch(`sunucudili_${message.guild.id}`)
+    let bakım = await db.fetch(`bakım`)
   if(bakım == "bakımda") {
     if(dil=="TR") return message.channel.send(`Bot bakımda!\nLütfen destek sunucumuza gelerek sorunu öğreniniz. Gelmel için ${prefix}davet`)
     if(dil=="EN") return message.channel.send(`Bot repairing!\nPlease come support server and learn the problem. To come ${prefix}invite`)
@@ -32,7 +32,7 @@ const embed = new Discord.MessageEmbed()
 `)
 .setImage("https://media.discordapp.net/attachments/793827180513198100/810128122586202132/standard_2.gif")
 .setColor("#aaffff")
-message.channel.send(embed)
+await message.channel.send(embed)
   }
   if(dil == "EN") {
     const embed = new Discord.MessageEmbed()
@@ -55,7 +55,7 @@ message.channel.send(embed)
 `)
 .setImage("https://media.discordapp.net/attachments/793827180513198100/810113577511419914/standard.gif")
 .setColor("#aaffff")
-message.channel.send(embed)
+await message.channel.send(embed)
     }
   }
 };
