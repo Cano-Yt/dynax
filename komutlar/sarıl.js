@@ -15,6 +15,18 @@ let dil = db.fetch(`sunucudili_${message.guild.id}`)
 require('request')({url: 'https://nekos.life/api/hug', json: true}, (req, res, json) => {
 
   if(dil == "TR") {
+    let talkedRecently = new Set();
+  if (talkedRecently.has(message.author.id)) {return message.channel.send(new Discord.MessageEmbed()
+.setAuthor("Uyarı!")
+.setDescription("10 Saniyede Bir Kullanılabilir!")
+.setColor("RANDOM"));
+} else {
+talkedRecently.add(message.author.id);
+setTimeout(() => {
+message.delete({ timeout: 1000 });
+talkedRecently.delete(message.author.id);
+}, 10000);
+}
         if(!member) return message.channel.send('Sarılmak istediğin kullanıcıyı etiketlemelisin!');
         if(member == message.author) return message.channel.send(`Kendine sarılamazsın :cry:\nAma ben sarılabilirim sana :hugging:`)
         let embed = new Discord.MessageEmbed()
