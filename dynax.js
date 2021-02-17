@@ -158,14 +158,13 @@ if(!message.guild) return;
     message.channel.send(`**Prefix : **\`${prefix}\``)
   }
 })
+
+
 client.on("message", message => {
-if(!message.guild) return;
-  if(message.member.id !== "351008627726876692") {
-  if(message.content === "<@!786240484879237147>") {
-    message.channel.send(`<@!786240484879237147> Aşkın çağırıyor bak lan :angry:`)
-  }
-  } else {return;}
-})
+     if(message.member.id == "351008627726876692") {
+if (message.content === `<@!786240484879237147`) return message.channel.send(`<@!786240484879237147> Aşkın çağırıyor bak lan :angry:`) 
+}else{return;}
+});
 client.on("guildCreate", guild => {
      var prefix = ayarlar.prefix;
   db.set(`sunucudili_${guild.id}`, "EN")
