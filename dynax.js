@@ -19,17 +19,13 @@ Bir rol'ü sunucuda bulmak için Komut'a "${message.guild.roles.cache.find(c => 
 Bir kanal'ı sunucuda bulmak için Komut'a "message.guild.channels.cache.find(c => c.id === "Kanal İD")" Koyun
 
 */
-const http = require("http");
+
 const express = require("express");
 const app = express();
-app.get("/", (request, response) => {
-  console.log(Date.now() + " Ping tamamdır.");
-  response.sendStatus(200);
-});
-app.listen(process.env.PORT);
-setInterval(() => {
-  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 280000);
+
+app.get('/', (req, res) => res.send('Pudochuptime'))
+app.listen(process.env.PORT, () => console.log('Port ayarlandı:' + process.env.PORT))
+
 
 const log = message => {
   console.log(`[${moment().format("YYYY-MM-DD HH:mm:ss")}] ${message}`);
