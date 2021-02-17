@@ -17,15 +17,16 @@ if(dil == "TR") {return message.channel.send(`Bir kullanıcı etiketlemelisin.`)
 if(dil == "EN") {return message.channel.send(`Please tag a member.`)}
 }
     let isim;
-      if(args[0]) {
-   isim = args.slice(0).join(' '); 
+      if(args[1]) {
+   isim = args.slice(1).join(' '); 
 } else {
   if(dil = "TR") {return message.channel.send(`Lütfen bir yazı veya sayı yazınız.`)}
   if(dil = "EN") {return message.channel.send(`Please write a text or a number.`)}
 }
-    member.setNickname(isim)
+  
     if(dil == "TR") {return message.channel.send(`${member} Adlı kullanıcının ismi \`${isim}\` Olarak değiştirildi`)}
     if(dil == "EN") {return message.channel.send(`${member} Named user nickname changed to \`${isim}\``)}
+    member.setNickname(isim)
   }
 }
 exports.conf = {
