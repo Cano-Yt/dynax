@@ -160,7 +160,7 @@ if(!message.guild) return;
 })
 client.on("message", async(message) => {
   if(!message.guild) return;
-  if(message.content.toLowerCase() === "sa" || "selam") {
+  if(message.content.toLowerCase() === "sa") {
     let selam = await db.fetch(`sa-as_${message.guild.id}`)
     if(selam == "acik") {
       return message.channel.send(`Aleyküm selam, hoşgeldin ${message.author} <a:cowiggle:811578710246424606>`)
