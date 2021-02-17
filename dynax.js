@@ -11,7 +11,7 @@ process.on('uncaughtException', function(err) {
     console.log(err) 
 }) 
 
-//Bilgiler
+//Bilgilers
 /*
 "Prefix ayarlamak için client.on veya exports.run Altına " let prefix = db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix; "" Koyun"
 
