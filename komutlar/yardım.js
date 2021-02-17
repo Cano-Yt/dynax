@@ -19,16 +19,16 @@ const embed = new Discord.MessageEmbed()
  \`Dil : TR | Türkçe\`
 
   \`Moderasyon\`
-> **dil | prefix | otorol | sayaç | isim**
+<a:arrow:811578672426254427> **dil | prefix | otorol | sayaç | isim**
 
   \`Kullanıcı\`
-> **istek**
+<a:arrow:811578672426254427> **istek**
 
   \`Eğlence\`
-> **öp | sarıl | okşa**
+<a:arrow:811578672426254427> **öp | sarıl | okşa**
   
   \`Sahip\`
-> **bakım | reboot | cullop**
+<a:arrow:811578672426254427> **bakım | reboot | cullop**
 `)
 .setImage("https://media.discordapp.net/attachments/793827180513198100/810128122586202132/standard_2.gif")
 .setColor("#aaffff")
@@ -42,16 +42,16 @@ await message.channel.send(embed)
  \`Language : EN | English\`
  
   \`Moderation\`
-> **Language | prefix | autorole | counter | nickname**
+<a:arrow:811578672426254427> **Language | prefix | autorole | counter | nickname**
 
   \`User\`
-> **request**
+<a:arrow:811578672426254427> **request**
 
   \`Fun\`
-> **kiss | hug | tap**
+<a:arrow:811578672426254427> **kiss | hug | tap**
 
   \`Owner\`
-> **repair | reboot | cullop**
+<a:arrow:811578672426254427> **repair | reboot | cullop**
 `)
 .setImage("https://media.discordapp.net/attachments/793827180513198100/810113577511419914/standard.gif")
 .setColor("#aaffff")
