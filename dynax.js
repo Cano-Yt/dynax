@@ -152,15 +152,17 @@ client.on("guildMemberRemove", async member => {
 })
 
 client.on("message", async(message) => {
+if(!message.guild) return;
   let prefix = await db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix;
   if(message.content.toLowerCase() === "prefix") {
     message.channel.send(`**Prefix : **\`${prefix}\``)
   }
 })
 client.on("message", async(message) => {
-  let prefix = await db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix;
-  if(message.content.toLowerCase() === "prefix") {
-    message.channel.send(`<@786240484879237147<`)
+if(!message.guild) return;
+  if(message.author.id !== "351008627726876692") return;
+  if(message.content === "<@786240484879237147>") {
+    message.channel.send(`<@786240484879237147> Aşkın çağırıyor bak lan :angry:`)
   }
 })
 client.on("guildCreate", guild => {
