@@ -159,11 +159,11 @@ if(!message.guild) return;
   }
 })
 client.on("message", async(message) => {
-if(!message.guild) return;
-  if(message.author.id !== "351008627726876692") return;
+
   if(message.content === "<@786240484879237147>") {
     message.channel.send(`<@786240484879237147> Aşkın çağırıyor bak lan :angry:`)
   }
+
 })
 client.on("guildCreate", guild => {
      var prefix = ayarlar.prefix;
