@@ -12,6 +12,10 @@ exports.run = async(client, message, args) => {
     if(dil=="EN") return message.channel.send(`Bot repairing!\nPlease come support server and learn the problem. To come ${prefix}invite`)
   } else {
     let member = message.mentions.members.first()
+    if(!member) { 
+if(dil == "TR") {return message.channel.send(`Bir kullanıcı etiketlemelisin.`)}
+if(dil == "EN") {return message.channel.send(`Please tag a member.`)}
+}
     let isim;
       if(args[0]) {
    isim = args.slice(0).join(' '); 
@@ -19,20 +23,20 @@ exports.run = async(client, message, args) => {
   if(dil = "TR") {return message.channel.send(`Lütfen bir yazı veya sayı yazınız.`)}
   if(dil = "EN") {return message.channel.send(`Please write a text or a number.`)}
 }
-    member.setNickname(`${isim}`)
+    member.setNickname(isim)
     if(dil == "TR") {return message.channel.send(`${member} Adlı kullanıcının ismi \`${isim}\` Olarak değiştirildi`)}
-    if(dil == "EN") {return message.channel.send(`${member} Named user nickname set \`${isim}\` Olarak değiştirildi`)}
+    if(dil == "EN") {return message.channel.send(`${member} Named user nickname changed to \`${isim}\``)}
   }
 }
 exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliases: [],
+    aliases: ["nickname","name"],
     permLevel: 0
   };
   
   exports.help = {
-    name: 'deneme',
+    name: 'isim',
     description: '',
     usage: ''
   };
