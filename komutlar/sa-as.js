@@ -14,7 +14,7 @@ let dil = await db.fetch(`sunucudili_${message.guild.id}`)
   } else {
     let selam = db.fetch(`sa-as_${message.guild.id}`)
     if(dil == "TR") {
-      if(args[0] !== "kapat" || args[0] !== "aç") return message.channel.send(`Selam verene cevap verme sistemini açmak için ${prefix}sa-as aç\nKapamak için ise ${prefix}sa-as kapat`)
+      if(args[0] !== "kapat" && args[0] !== "aç") return message.channel.send(`Selam verene cevap verme sistemini açmak için ${prefix}sa-as aç\nKapamak için ise ${prefix}sa-as kapat`)
     if(args[0] == "kapat") {
       if(selam !== "acik") return message.channel.send(`selam verene cevap verme sistemi zaten kapalı.`)
       await db.delete(`sa-as_${message.guild.id}`)

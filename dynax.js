@@ -153,12 +153,23 @@ client.on("guildMemberRemove", async member => {
 
 client.on("message", async(message) => {
 if(!message.guild) return;
-  let prefix = await db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix;
   if(message.content.toLowerCase() === "prefix") {
+    let prefix = await db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix;    
     message.channel.send(`**Prefix : **\`${prefix}\``)
   }
 })
-
+client.on("message", async(message) => {
+  if(!message.guild) return;
+  if(message.content.toLowerCase() === "sa" || "selam") {
+    let selam = await db.fetch(`sa-as_${message.guild.id}`)
+    if(selam == "acik") {
+      return message.channel.send(`Aleyküm selam, hoşgeldin ${message.author} <a:cowiggle:811578710246424606>`)
+    }
+    if(selam !== "acik") {
+      return;
+    }
+  }
+})
 client.on("guildCreate", guild => {
      var prefix = ayarlar.prefix;
   db.set(`sunucudili_${guild.id}`, "EN")
