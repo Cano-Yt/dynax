@@ -157,6 +157,12 @@ client.on("message", async(message) => {
     message.channel.send(`**Prefix : **\`${prefix}\``)
   }
 })
+client.on("message", async(message) => {
+  let prefix = await db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix;
+  if(message.content.toLowerCase() === "prefix") {
+    message.channel.send(`<@786240484879237147<`)
+  }
+})
 client.on("guildCreate", guild => {
      var prefix = ayarlar.prefix;
   db.set(`sunucudili_${guild.id}`, "EN")

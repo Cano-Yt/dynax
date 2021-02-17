@@ -15,20 +15,8 @@ let dil = db.fetch(`sunucudili_${message.guild.id}`)
 require('request')({url: 'https://nekos.life/api/hug', json: true}, (req, res, json) => {
 
   if(dil == "TR") {
-    let talkedRecently = new Set();
-  if (talkedRecently.has(message.author.id)) {return message.channel.send(new Discord.MessageEmbed()
-.setAuthor("Uyarı!")
-.setDescription("10 Saniyede Bir Kullanılabilir!")
-.setColor("RANDOM"));
-} else {
-talkedRecently.add(message.author.id);
-setTimeout(() => {
-message.delete({ timeout: 1000 });
-talkedRecently.delete(message.author.id);
-}, 10000);
-}
         if(!member) return message.channel.send('Sarılmak istediğin kullanıcıyı etiketlemelisin!');
-        if(member == message.author) return message.channel.send(`Kendine sarılamazsın :cry:\nAma ben sarılabilirim sana :hugging:`)
+        if(message.author.id == member.user.id) return message.channel.send(`Kendine sarılamazsın\nAma ben sana sarılabilirim :hugging:`)
         let embed = new Discord.MessageEmbed()
         .setTitle(message.author.username +" " + member.user.username+ ' Adlı kullanıcıya sarılıyor!')
         .setColor('#aaffff')
@@ -37,7 +25,7 @@ talkedRecently.delete(message.author.id);
       }
       if(dil == "EN") {
         if(!member) return message.channel.send('You must tag the user you want to hug!');
-        if(member == message.author) return message.channel.send(`You can't hug yourself :cry:\nBut I can hug you :hugging:`)
+        if(message.author.id == member.user.id) return message.channel.send(`You can't hug yourself\nBut I can hug you :hugging:`)
         let embed = new Discord.MessageEmbed()
         .setTitle(message.author.username +" " + member.user.username+ ' Hugs soo cute!')
         .setColor('#aaffff')
