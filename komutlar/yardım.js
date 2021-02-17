@@ -17,7 +17,6 @@ const embed = new Discord.MessageEmbed()
     .setDescription(`
  \`Prefix : ${prefix}\`
  \`Dil : TR | Türkçe\`
- <:uni:811089812190003200>
   \`Moderasyon\`
 > **dil | prefix | otorol | sayaç**
 

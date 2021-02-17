@@ -15,6 +15,7 @@ exports.run = async(client, message, args) => {
     let rol = message.mentions.roles.first()
     let otorols = db.fetch(`otoRol_${message.guild.id}`)
     if(dil == "TR") {
+      if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`Bu komutu kullanmak için \`Yönetici\` Yetkisine sahip olmalısın.`)
       if(args[0] == "sil") {
         db.delete(`otoRol_${message.guild.id}`)
         db.delete(`otorolkanal_${message.guild.id}`)
@@ -31,6 +32,7 @@ exports.run = async(client, message, args) => {
       }
     }
    if(dil == "EN") {
+     if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`You must have \`Administrator\` Permission to use this command.`)
            if(args[0] == "delete") {
         db.delete(`otoRol_${message.guild.id}`)
         db.delete(`otorolkanal_${message.guild.id}`)

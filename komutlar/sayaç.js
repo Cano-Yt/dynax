@@ -16,6 +16,7 @@ exports.run = async(client, message, args) => {
     let kanal = message.mentions.channels.first()
     let sayı2 = message.guild.memberCount
     if(dil == "TR") {
+      if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`Bu komutu kullanmak için \`Yönetici\` Yetkisine sahip olmalısın.`)
     if(args[0] == "sil") {
       await db.delete(`sayackanal_${message.guild.id}`)
       await db.delete(`sayacsayı_${message.guild.id}`)
@@ -26,6 +27,7 @@ exports.run = async(client, message, args) => {
     if(!kanal) return message.channel.send(`Lütfen bir kanal belirtiniz.`)
     }
     if(dil == "EN") {
+      if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`You must have \`Administrator\` Permission to use this command.`)
     if(args[0] == "delete") {
       await db.delete(`sayackanal_${message.guild.id}`)
       await db.delete(`sayacsayı_${message.guild.id}`)
