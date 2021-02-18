@@ -70,6 +70,32 @@ client.on("guildMemberAdd", async member => {
   member.setNickname(`℘ İsim | Yaş`)
 })
 */
+
+client.on("message", async(message) => {
+if(await db.fetch(`afkoldu_${message.author.id}_${message.guild.id}`) == undefined) return;
+  
+const sebepp = await db.fetch(`afksebeb_${message.author.id}_${message.guild.id}`)
+const sp = await db.fetch(`giriş_${message.author.id}_${message.guild.id}`)
+
+  let atılmaay = moment(Date.now()+10800000).format("MM")
+  let atılmagün = moment(Date.now()+10800000).format("DD")
+  let atılmasaat = moment(Date.now()+10800000).format("HH:mm:ss")
+  let atılma = `\`${atılmagün} ${atılmaay.replace(/01/, 'Ocak').replace(/02/, 'Şubat').replace(/03/, 'Mart').replace(/04/, 'Nisan').replace(/05/, 'Mayıs').replace(/06/, 'Haziran').replace(/07/, 'Temmuz').replace(/08/, 'Ağustos').replace(/09/, 'Eylül').replace(/10/, 'Ekim').replace(/11/, 'Kasım').replace(/12/, 'Aralık')} ${atılmasaat}\``
+  
+  const embed = new Discord.MessageEmbed()
+  .setTitle(`Afk sistemi`)
+  .setDescription(`
+  **${message.author.tag} Afk'lıktan çıktı
+  **Sebebi : **\`${sebepp}\`
+  **Giriş zamanı: **\`${sp}\`
+  **Çıkış zamanı: **\`${atılma}\`
+  `)
+db.delete(`afksebeb_${message.author.id}_${message.guild.id}`)
+db.delete(`afkoldu_${message.author.id}_${message.guild.id}`)
+db.delete(`giriş_${message.author.id}_${message.guild.id}`)
+
+})
+
 client.on("guildMemberAdd", async member => {
 let kanal = await db.fetch(`otorolkanal_${member.guild.id}`)
 let rol = await db.fetch(`otoRol_${member.guild.id}`)
