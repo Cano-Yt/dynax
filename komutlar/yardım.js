@@ -22,7 +22,7 @@ const embed = new Discord.MessageEmbed()
 <a:arrow:811578672426254427> **dil | prefix | otorol | sayaç | isim**
 
   \`Kullanıcı\`
-<a:arrow:811578672426254427> **istek | afk**
+<a:arrow:811578672426254427> **istek | afk | davet**
 
   \`Eğlence\`
 <a:arrow:811578672426254427> **öp | sarıl | okşa**
@@ -45,7 +45,7 @@ await message.channel.send(embed)
 <a:arrow:811578672426254427> **Language | prefix | autorole | counter | nickname**
 
   \`User\`
-<a:arrow:811578672426254427> **request | afk**
+<a:arrow:811578672426254427> **request | afk | invite**
 
   \`Fun\`
 <a:arrow:811578672426254427> **kiss | hug | tap**
