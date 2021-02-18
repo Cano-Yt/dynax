@@ -87,8 +87,8 @@ const sp = await db.fetch(`giriş_${message.author.id}_${message.guild.id}`)
   .setDescription(`
   **${message.author.tag} Afk'lıktan çıktı**
   **Sebebi :** \`${sebepp}\`
-  **Giriş zamanı:** \`${sp}\`
-  **Çıkış zamanı:** \`${atılma}\`
+  **Giriş zamanı:** ${sp}
+  **Çıkış zamanı:** ${atılma}
   `)
   message.channel.send(embed)
 await db.delete(`afksebeb_${message.author.id}_${message.guild.id}`)
