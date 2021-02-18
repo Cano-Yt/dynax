@@ -33,11 +33,11 @@ exports.run = async(client, message, args) => {
         message.channel.send(`I deleted my prefix on the server\nNew prefix : ${ayarlar.prefix}`)
         message.guild.owner.send(`The prefix on ${message.guild.name} has been deleted by ${message.author}!\nNew prefix : ${ayarlar.prefix}`)
       }
-      if(prefix1 == "sil") return;
+      if(prefix1 == "delete") return;
       if(!prefix1) return message.channel.send(`You must enter a prefix to set it.`)
      await db.set(`prefix_${message.guild.id}`, prefix1)
-      message.channel.send(`Your prefix on the server is set to $ {prefix1}.`)
-      message.guild.owner.send(`Your prefix on ${message.guild.name} set to $ {prefix1} by ${message.author}.`)
+      message.channel.send(`Your prefix on the server is set to ${prefix1}.`)
+      message.guild.owner.send(`Your prefix on ${message.guild.name} set to ${prefix1} by ${message.author}.`)
   }
   }
 }

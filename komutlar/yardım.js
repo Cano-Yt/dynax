@@ -28,7 +28,7 @@ const embed = new Discord.MessageEmbed()
 <a:arrow:811578672426254427> **öp | sarıl | okşa**
   
   \`Sahip\`
-<a:arrow:811578672426254427> **bakım | reboot | cullop**
+<a:arrow:811578672426254427> **bakım | reboot | cullop | pre-ver**
 `)
 .setImage("https://media.discordapp.net/attachments/793827180513198100/810128122586202132/standard_2.gif")
 .setColor("#aaffff")
@@ -51,7 +51,7 @@ await message.channel.send(embed)
 <a:arrow:811578672426254427> **kiss | hug | tap**
 
   \`Owner\`
-<a:arrow:811578672426254427> **repair | reboot | cullop**
+<a:arrow:811578672426254427> **bakım | reboot | cullop | pre-ver**
 `)
 .setImage("https://media.discordapp.net/attachments/793827180513198100/810113577511419914/standard.gif")
 .setColor("#aaffff")

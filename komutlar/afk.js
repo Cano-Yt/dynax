@@ -4,6 +4,8 @@ const moment = require("moment")
 const ayarlar = require("../ayarlar.json");
 
 exports.run = async (client, message, args) => {
+  let afk = db.fetch(`afkoldu_${message.author.id}_${message.guild.id}`)
+  if(afk) return;
   let prefix = ayarlar.prefix
   let sebeb = args.slice(0).join(' ');
   let atılmaay = moment(Date.now()+10800000).format("MM")
