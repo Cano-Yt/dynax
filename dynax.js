@@ -85,14 +85,15 @@ const sp = await db.fetch(`giriş_${message.author.id}_${message.guild.id}`)
   const embed = new Discord.MessageEmbed()
   .setTitle(`Afk sistemi`)
   .setDescription(`
-  **${message.author.tag} Afk'lıktan çıktı
-  **Sebebi : **\`${sebepp}\`
-  **Giriş zamanı: **\`${sp}\`
-  **Çıkış zamanı: **\`${atılma}\`
+  **${message.author.tag} Afk'lıktan çıktı**
+  **Sebebi :** \`${sebepp}\`
+  **Giriş zamanı:** \`${sp}\`
+  **Çıkış zamanı:** \`${atılma}\`
   `)
-db.delete(`afksebeb_${message.author.id}_${message.guild.id}`)
-db.delete(`afkoldu_${message.author.id}_${message.guild.id}`)
-db.delete(`giriş_${message.author.id}_${message.guild.id}`)
+  message.channel.send(embed)
+await db.delete(`afksebeb_${message.author.id}_${message.guild.id}`)
+await db.delete(`afkoldu_${message.author.id}_${message.guild.id}`)
+await db.delete(`giriş_${message.author.id}_${message.guild.id}`)
 
 })
 

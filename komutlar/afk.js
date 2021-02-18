@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
     const embed = new Discord.MessageEmbed()
     .setTitle(`AFK sistemi`)
     .setDescription(`
-    **${message.author.tag} Afk oldu
+    **${message.author.tag} Afk oldu**
     **Sebebi : **\`Belirtilmemiş.\`
     **Giriş zamanı: **\`${atılma}\`
     `)
@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
     const embed = new Discord.MessageEmbed()
     .setTitle(`AFK sistemi`)
     .setDescription(`
-    **${message.author.tag} Afk oldu
+    **${message.author.tag} Afk oldu**
     **Sebebi : **\`${sebeb}\`
     **Giriş zamanı: **\`${atılma}\`
     `)
