@@ -46,8 +46,22 @@ client.channels.cache.get('810145611939840000').send(embed);
 })
 */
 
+client.on("message", message => {
+  if(message.content == "invite") {
+      let invite = message.channel.createInvite(
+  {
+    maxAge: 10 * 60 * 1000, // maximum time for the invite, in milliseconds
+    maxUses: 1 // maximum times it can be used
+  },
+  `Requested with command by ${message.author.tag}`
+)
+.catch(console.log);
 
+  message.reply(invite ? `Here's your invite: ${invite}` : "There has been an error during the creation of the invite.");
+  }
+})
 client.on("message", async(message) => {
+if(!message.guild) return;
 if(await db.fetch(`afkoldu_${message.author.id}_${message.guild.id}`) == undefined) return;
 
 let dil = await db.fetch(`sunucudili_${message.guild.id}`)

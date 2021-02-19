@@ -4,9 +4,9 @@ const db = require("quick.db")
 exports.run = async (client, message, args) => {
   
 let dil = db.fetch(`sunucudili_${message.guild.id}`)
-if(dil = "TR") {
+if(dil == "TR") {
   const onayembed = new Discord.MessageEmbed()
-  .setColor("RED")
+  .setColor("aaffff")
   .setTimestamp()
   .setAuthor("Nuke sistemi")
   .setFooter("Onaylamak için 👍 emojisine, Red etmek içinse 👎 emojisine tıklayabilirsiniz")
@@ -23,7 +23,7 @@ msg.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
 		const reaction = collected.first();
 
 		if (reaction.emoji.name === '👍') {
-      message.channel.clone({position: message.channel.position}).then(message => message.send(new Discord.MessageEmbed().setTitle(`Bu kanal patlatıldı!`).setImage("https://tenor.com/view/explosion-boom-explode-gif-17383346")))
+      message.channel.clone({position: message.channel.position}).then(message => message.send(new Discord.MessageEmbed().setColor("aaffff").setTitle(`Bu kanal patlatıldı!`).setImage("https://tenor.com/view/explosion-boom-explode-gif-17383346")))
       message.channel.delete();
 		} else {
 			message.channel.send('Nuke işlemi iptal edildi!');
@@ -36,9 +36,9 @@ msg.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
   
 })
 }
-  if(dil = "EN") {
+  if(dil == "EN") {
       const onayembed = new Discord.MessageEmbed()
-  .setColor("RED")
+  .setColor("aaffff")
   .setTimestamp()
   .setAuthor("Nuke System")
   .setFooter("You can click on the 👍 emoji to confirm or the 👎 emoji to Decline")
@@ -55,7 +55,7 @@ msg.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
 		const reaction = collected.first();
 
 		if (reaction.emoji.name === '👍') {
-      message.channel.clone({position: message.channel.position}).then(message => message.send(new Discord.MessageEmbed().setTitle(`This channel nuked!`).setImage("https://tenor.com/view/explosion-boom-explode-gif-17383346")))
+      message.channel.clone({position: message.channel.position}).then(message => message.send(new Discord.MessageEmbed().setColor("aaffff").setTitle(`This channel nuked!`).setImage("https://tenor.com/view/explosion-boom-explode-gif-17383346")))
       message.channel.delete();
 		} else {
 			message.channel.send('Nuke operation canceled!');
