@@ -14,7 +14,7 @@ if (message.author.id !== "351008627726876692" && message.author.id !== "7862404
  if(message.author.id == sude) {
    if(member.id !== can) return message.channel.send(`Sadece Can'ı öpebilirsin!`)
    const embed = new Discord.MessageEmbed()
-   .setTitle(`<@!${sude}> İle <@!${can}> Öpüşüyor..`)
+   .setTitle(`<@${sude}> İle <@${can}> Öpüşüyor..`)
    .setColor('#aaffff')
    .setImage(response);
    message.channel.send(embed);
@@ -22,7 +22,7 @@ if (message.author.id !== "351008627726876692" && message.author.id !== "7862404
   if(message.author.id == can) {
     if(member.id !== sude) return message.channel.send(`Sadece Sude'yi öpebilirsin!`)
    const embed = new Discord.MessageEmbed()
-   .setTitle(`Can İle Sude Öpüşüyor..`)
+   .setTitle(`<@${sude}> İle <@${can}> Öpüşüyor..`)
    .setColor('#aaffff')
    .setImage(response);
    message.channel.send(embed);

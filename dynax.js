@@ -50,7 +50,7 @@ client.channels.cache.get('810145611939840000').send(embed);
 client.on("message", async(message) => {
 if(await db.fetch(`afkoldu_${message.author.id}_${message.guild.id}`) == undefined) return;
 
-let dil = db.fetch(`sunucudili_${message.guild.id}`)
+let dil = await db.fetch(`sunucudili_${message.guild.id}`)
 const sebepp = await db.fetch(`afksebeb_${message.author.id}_${message.guild.id}`)
 const sp = await db.fetch(`giriş_${message.author.id}_${message.guild.id}`)
 
@@ -94,6 +94,7 @@ await db.delete(`giriş_${message.author.id}_${message.guild.id}`)
   }
 })
 client.on("message", async(message) => {
+if(message.guild) return;
   let member = message.mentions.members.first()
   if(!member) return;
   let dil = await db.fetch(`sunucudili_${message.guild.id}`)
@@ -154,7 +155,7 @@ await client.channels.cache.get(kanal).send(embed1);
 client.on("guildMemberAdd", async member => {
   let sayı = await db.fetch(`sayacsayı_${member.guild.id}`);
   let kanal = await db.fetch(`sayackanal_${member.guild.id}`);
-  let dil = db.fetch(`sunucudili_${member.guild.id}`)
+  let dil = await db.fetch(`sunucudili_${member.guild.id}`)
   if (!sayı || !kanal) return;
   let sonuç = sayı - member.guild.memberCount;
   if(dil == "TR") {
@@ -183,7 +184,7 @@ client.on("guildMemberAdd", async member => {
 client.on("guildMemberRemove", async member => {
   let sayı = await db.fetch(`sayacsayı_${member.guild.id}`);
   let kanal = await db.fetch(`sayackanal_${member.guild.id}`);
-  let dil = db.fetch(`sunucudili_${member.guild.id}`)
+  let dil = await db.fetch(`sunucudili_${member.guild.id}`)
   if (!sayı || !kanal) return;
   let sonuç = sayı - member.guild.memberCount;
   if(dil == "TR") {
