@@ -50,15 +50,16 @@ client.channels.cache.get('810145611939840000').send(embed);
 client.on("message", async(message) => {
 if(await db.fetch(`afkoldu_${message.author.id}_${message.guild.id}`) == undefined) return;
 
-let dil = db.fetch(`sunucudili_`)
+let dil = db.fetch(`sunucudili_${message.guild.id}`)
 const sebepp = await db.fetch(`afksebeb_${message.author.id}_${message.guild.id}`)
 const sp = await db.fetch(`giriş_${message.author.id}_${message.guild.id}`)
 
+if(dil == "TR") {
+  moment.locale("tr")
   let atılmaay = moment(Date.now()+10800000).format("MM")
   let atılmagün = moment(Date.now()+10800000).format("DD")
   let atılmasaat = moment(Date.now()+10800000).format("HH:mm:ss")
   let atılma = `\`${atılmagün} ${atılmaay.replace(/01/, 'Ocak').replace(/02/, 'Şubat').replace(/03/, 'Mart').replace(/04/, 'Nisan').replace(/05/, 'Mayıs').replace(/06/, 'Haziran').replace(/07/, 'Temmuz').replace(/08/, 'Ağustos').replace(/09/, 'Eylül').replace(/10/, 'Ekim').replace(/11/, 'Kasım').replace(/12/, 'Aralık')} ${atılmasaat}\``
-  
   const embed = new Discord.MessageEmbed()
   .setTitle(`Afk sistemi`)
   .setDescription(`
@@ -71,6 +72,26 @@ const sp = await db.fetch(`giriş_${message.author.id}_${message.guild.id}`)
 await db.delete(`afksebeb_${message.author.id}_${message.guild.id}`)
 await db.delete(`afkoldu_${message.author.id}_${message.guild.id}`)
 await db.delete(`giriş_${message.author.id}_${message.guild.id}`)
+}
+  if(dil == "EN") {
+  moment.locale("en")
+  let atılmaay = moment(Date.now()+10800000).format("MM")
+  let atılmagün = moment(Date.now()+10800000).format("DD")
+  let atılmasaat = moment(Date.now()+10800000).format("HH:mm:ss")
+  let atılmaen = `\`${atılmagün} ${atılmaay.replace(/01/, 'January').replace(/02/, 'February').replace(/03/, 'March').replace(/04/, 'April').replace(/05/, 'May').replace(/06/, 'June').replace(/07/, 'July').replace(/08/, 'August').replace(/09/, 'September').replace(/10/, 'October').replace(/11/, 'November').replace(/12/, 'December')} ${atılmasaat}\``
+  const embed = new Discord.MessageEmbed()
+  .setTitle(`Afk sistemi`)
+  .setDescription(`
+  **${message.author.tag} Afk'lıktan çıktı**
+  **Sebebi :** \`${sebepp}\`
+  **Giriş zamanı:** ${sp}
+  **Çıkış zamanı:** ${atılmaen}
+  `)
+  message.channel.send(embed)
+await db.delete(`afksebeb_${message.author.id}_${message.guild.id}`)
+await db.delete(`afkoldu_${message.author.id}_${message.guild.id}`)
+await db.delete(`giriş_${message.author.id}_${message.guild.id}`)
+  }
 })
 
 client.on("guildMemberAdd", async member => {

@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
   let atılmaay = moment(Date.now()+10800000).format("MM")
   let atılmagün = moment(Date.now()+10800000).format("DD")
   let atılmasaat = moment(Date.now()+10800000).format("HH:mm:ss")
-  let atılmaen = `\`${atılmagün} ${atılmaay.replace(/01/, 'January').replace(/02/, 'February').replace(/03/, 'March').replace(/04/, 'April').replace(/05/, 'May').replace(/06/, 'June').replace(/07/, 'July').replace(/08/, 'August').replace(/09/, 'September').replace(/10/, 'October').replace(/11/, 'November').replace(/12/, 'December')} ${atılmasaat}\``
+   atılmaen = `\`${atılmagün} ${atılmaay.replace(/01/, 'January').replace(/02/, 'February').replace(/03/, 'March').replace(/04/, 'April').replace(/05/, 'May').replace(/06/, 'June').replace(/07/, 'July').replace(/08/, 'August').replace(/09/, 'September').replace(/10/, 'October').replace(/11/, 'November').replace(/12/, 'December')} ${atılmasaat}\``
   } 
   
 
@@ -67,7 +67,7 @@ exports.run = async (client, message, args) => {
     .setDescription(`
     **${message.author.tag} is afk**
     **Reason: ** \`Not specified.\`
-    **Giriş zamanı: **${atılmaen}
+    **Entry time: **${atılmaen}
     `)
     .setThumbnail("https://cdn.discordapp.com/attachments/783001757596254238/811956462666514442/811586592102940704.png")
     message.channel.send(embed)
