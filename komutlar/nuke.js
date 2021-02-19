@@ -11,7 +11,7 @@ if(dil = "TR") {
   .setAuthor("Nuke sistemi")
   .setFooter("Onaylamak için 👍 emojisine, Red etmek içinse 👎 emojisine tıklayabilirsiniz")
   .setDescription("**UYARI!** \n\nEğer nuke işlemini onaylarsanız bu kanal kalıcı olarak **silinecek**,\n**geri getirilemeyecektir!**\nAncak bu kanalın **kopyası oluşturulacaktır!** \n")
-  message.channel.send(onayembed).then(msg => {
+  return message.channel.send(onayembed).then(msg => {
 msg.react('👍').then(() => msg.react('👎'));
 
 const filter = (reaction, user) => {
@@ -37,7 +37,6 @@ msg.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
 })
 }
   if(dil = "EN") {
-
       const onayembed = new Discord.MessageEmbed()
   .setColor("RED")
   .setTimestamp()
