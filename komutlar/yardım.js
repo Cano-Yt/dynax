@@ -19,7 +19,7 @@ const embed = new Discord.MessageEmbed()
  \`Dil : TR | Türkçe\`
 
   \`Moderasyon\`
-<a:arrow:811578672426254427> **dil | prefix | otorol | sayaç | isim | nuke**
+<a:arrow:811578672426254427> **dil | prefix | otorol | sayaç | isim | nuke | ayarlar**
 
   \`Kullanıcı\`
 <a:arrow:811578672426254427> **istek | afk | davet**
