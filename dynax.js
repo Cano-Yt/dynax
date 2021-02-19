@@ -36,7 +36,7 @@ const log = message => {
 ///////////// KOMUTLAR BAŞ
 client.on("message", message => {
 if(message.content === "deneme") {
-  message.inlineReply("hop :)")
+  message.inlineReply("<:uni:811089812190003200>")
 }
 })
 
