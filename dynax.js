@@ -34,7 +34,11 @@ const log = message => {
 };
 
 ///////////// KOMUTLAR BAŞ
-client.on()
+client.on("message", message => {
+if(message.content === "deneme") {
+  message.inlineReply("hop :)")
+}
+})
 
 /*
 client.on("ready", () => {
