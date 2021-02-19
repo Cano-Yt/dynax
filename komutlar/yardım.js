@@ -42,7 +42,7 @@ await message.channel.send(embed)
  \`Language : EN | English\`
  
   \`Moderation\`
-<a:arrow:811578672426254427> **Language | prefix | autorole | counter | nickname | nuke**
+<a:arrow:811578672426254427> **Language | prefix | autorole | counter | nickname | nuke | settings**
 
   \`User\`
 <a:arrow:811578672426254427> **request | afk | invite**
