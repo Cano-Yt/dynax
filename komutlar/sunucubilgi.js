@@ -19,12 +19,13 @@ exports.run = async(client, message, args) => {
     };
 if(dil == "TR") {
   const embed = new Discord.MessageEmbed()
-  .setAuthor(`Bir Sunucudan Atıldım`)
+  .setAuthor(`${message.guild.name} - Bilgi`)
   .addField(`Sunucunun adı`, message.guild.name)
   .addField(`Sunucunun Id'si`, message.guild.id)
-  .addField(`Sunucudaki kişi sayısı`, message.guild.memberCount)
   .addField(`Sunucunun bölgesi`, message.guild.region)
-  .addField(`Kanallar | Roller`, `${message.guild.channels.cache.size} ${message.guild.roles.cache.size}`)
+  .addField(`Kanal sayısı`, message.guild.channels.cache.size)
+  .addField(`Rol sayısı`, message.guild.roles.cache.size)
+  .addField(`Emoji sayısı`, message.guild.emojis.cache.size)
   .addField(`Kuruluş zamanı`, `${message.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(message.guild.createdAt)})`)
   .addField(`Toplam | Üyeler | Botlar`, `${message.guild.members.cache.size} | ${message.guild.members.cache.filter(member => !member.user.bot).size} | ${message.guild.members.cache.filter(member => member.user.bot).size}`)
   .setThumbnail(message.guild.iconURL())
@@ -32,17 +33,27 @@ if(dil == "TR") {
 }
     if(dil == "EN") {
         const embed = new Discord.MessageEmbed()
-  .setAuthor(`Bir Sunucudan Atıldım`)
+  .setAuthor(`${message.guild.name} - info`)
   .addField(`Server name`, message.guild.name)
   .addField(`Server id`, message.guild.id)
-  .addField(`Total users`, message.guild.memberCount)
   .addField(`Server's region`, message.guild.region)
-  .addField(`Channels | Roles`, `${message.guild.channels.cache.size} ${message.guild.roles.cache.size}`)
-  .addField(`Kuruluş zamanı`, `${message.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(message.guild.createdAt)})`)
-  .addField(`Toplam | Üyeler | Botlar`, `${message.guild.members.cache.size} | ${message.guild.members.cache.filter(member => !member.user.bot).size} | ${message.guild.members.cache.filter(member => member.user.bot).size}`)
+  .addField(`Channels | Roles`, `${message.guild.channels.cache.size} | ${message.guild.roles.cache.size}`)
+  .addField(`Crate time`, `${message.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(message.guild.createdAt)})`)
+  .addField(`Total | Members | Bots`, `${message.guild.members.cache.size} | ${message.guild.members.cache.filter(member => !member.user.bot).size} | ${message.guild.members.cache.filter(member => member.user.bot).size}`)
   .setThumbnail(message.guild.iconURL())
   message.channel.send(embed)
     }
 }
-
 }
+exports.conf = {
+    enabled: true,
+    guildOnly: false,
+    aliases: ["sunucubilgi","server-info","serverinfo"],
+    permLevel: 0
+  };
+  
+  exports.help = {
+    name: 'sunucu-bilgi',
+    description: '',
+    usage: ''
+  };
