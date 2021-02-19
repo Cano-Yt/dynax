@@ -5,6 +5,7 @@ exports.run = async (client, message, args) => {
   
 let dil = db.fetch(`sunucudili_${message.guild.id}`)
 if(dil == "TR") {
+  if(message.author.hasPermission("ADMINISTRATOR")) return message.channel.send(`Bu komutu kullanabilmek için \``)
   const onayembed = new Discord.MessageEmbed()
   .setColor("aaffff")
   .setTimestamp()

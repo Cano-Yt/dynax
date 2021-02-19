@@ -30,7 +30,8 @@ if(dil == "TR") {
   .addField(`Toplam kullanıcılar`, message.guild.members.cache.size,true)
   .addField(`Üyeler`, message.guild.members.cache.filter(member => !member.user.bot).size, true)
   .addField(`Botlar`, message.guild.members.cache.filter(member => member.user.bot).size,true)
-  .setThumbnail(message.guild.iconURL())
+.setImage(ayarlar.trbanner)
+.setThumbnail(message.guild.iconURL())
   message.channel.send(embed)
 }
     if(dil == "EN") {
@@ -46,7 +47,7 @@ if(dil == "TR") {
   .addField(`Total users`, message.guild.members.cache.size,true)
   .addField(`Members`, message.guild.members.cache.filter(member => !member.user.bot).size, true)
   .addField(`Bots`, message.guild.members.cache.filter(member => member.user.bot).size,true)
-
+.setImage(ayarlar.enbanner)
 .setThumbnail(message.guild.iconURL())
   message.channel.send(embed)
     }

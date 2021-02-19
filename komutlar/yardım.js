@@ -30,7 +30,7 @@ const embed = new Discord.MessageEmbed()
   \`Sahip\`
 <a:arrow:811578672426254427> **bakım | reboot | cullop | pre-ver**
 `)
-.setImage("https://media.discordapp.net/attachments/793827180513198100/810128122586202132/standard_2.gif")
+.setImage(ayarlar.trbanner)
 .setColor("#aaffff")
 await message.channel.send(embed)
   }
@@ -53,7 +53,7 @@ await message.channel.send(embed)
   \`Owner\`
 <a:arrow:811578672426254427> **bakım | reboot | cullop | pre-ver**
 `)
-.setImage("https://media.discordapp.net/attachments/793827180513198100/810113577511419914/standard.gif")
+.setImage(ayarlar.enbanner)
 .setColor("#aaffff")
 await message.channel.send(embed)
     }

@@ -17,8 +17,11 @@ exports.run = async(client, message, args) => {
     if(dil=="EN") return message.channel.send(`Bot repairing!\nPlease come support server and learn the problem. To come ${prefix}invite`)
   }else{
   
-
-  const mesaj = await message.channel.send(`Lütfen bekleyiniz ${client.user.username}'in istatistiklerini alıyoruz`)
+   
+  let mesaj; {
+ if(dil == "TR") {message.channel.send(`Lütfen bekleyiniz **${client.user.username}**'in istatistiklerini alıyoruz`)}
+ if(dil == "EN") {message.channel.send(`Please wait we are getting statistics of **${client.user.username}**`)}
+  }
       var osType = await os.type();
 		if (osType === 'Darwin') osType = 'macOS'
 		else if (osType === 'Windows') osType = 'Windows'
@@ -39,7 +42,7 @@ exports.run = async(client, message, args) => {
         const s = new Discord.MessageEmbed()
         .setColor("RANDOM")
         .setAuthor(`${client.user.username} | İstatistikler`, client.user.avatarURL())
-        .addField('Gecikme süreleri', `Mesaj Gecikmesi: ${new Date().getTime() - message.createdTimestamp} milisaniye \nBot Gecikmesi: ${client.ws.ping} milisaniye`)
+        .addField('Gecikme süreleri', `Mesaj Gecikmesi: **${new Date().getTime() - message.createdTimestamp}** ms \nBot Gecikmesi: **${client.ws.ping}** ms`)
         .addField('Çalışma süresi', `${duration}`, true)
         .addField('Genel veriler', stripIndents`
         **Kullanıcı Sayısı:**  ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0).toLocaleString()}
@@ -54,6 +57,7 @@ exports.run = async(client, message, args) => {
         .addField('İşletim sistemi', `${osType} ${osBit}`, true)
         
         .addField('İşlemci', `\`\`\`xl\n${os.cpus().map(i => `${i.model}`)[0]}\n\`\`\``)
+        .setImage("https://media.discordapp.net/attachments/793827180513198100/810128122586202132/standard_2.gif") 
         message.channel.send(s).then(mesaj.delete({timeout:1000}))
         }
         if(dil == "EN") {
@@ -61,22 +65,23 @@ exports.run = async(client, message, args) => {
       
         const s = new Discord.MessageEmbed()
         .setColor("RANDOM")
-        .setAuthor(`${client.user.username} | İstatistikler`, client.user.avatarURL())
-        .addField('Delay times', `Mesaj Gecikmesi: ${new Date().getTime() - message.createdTimestamp} milisaniye \nBot Gecikmesi: ${client.ws.ping} milisaniye`)
+        .setAuthor(`${client.user.username} | Statistics`, client.user.avatarURL())
+        .addField('Delay times', `Message delay: **${new Date().getTime() - message.createdTimestamp}** ms \nBot delay: **${client.ws.ping}** ms`)
         .addField('Uptime', `${duration}`, true)
-        .addField('Genel veriler', stripIndents`
-        **Kullanıcı Sayısı:**  ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0).toLocaleString()}
-        **Sunucu Sayısı:** ${client.guilds.cache.size.toLocaleString()}
-        **Kanal Sayısı:** ${client.channels.cache.size.toLocaleString()}
+        .addField('General data', stripIndents`
+        **Members number:**  ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0).toLocaleString()}
+        **Servers number:** ${client.guilds.cache.size.toLocaleString()}
+        **Channels number:** ${client.channels.cache.size.toLocaleString()}
         `, true)
-        .addField('Versiyonlar', stripIndents`
-        **Discord.JS sürümü** v${Discord.version}
-        **NodeJS sürümü** ${process.version}
+        .addField('Versions', stripIndents`
+        **Discord.JS version** v${Discord.version}
+        **NodeJS version** ${process.version}
         `, true)
-        .addField('Kullanılan bellek boyutu', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024).toLocaleString()} MB`, true)
-        .addField('İşletim sistemi', `${osType} ${osBit}`, true)
+        .addField('Memory size', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024).toLocaleString()} MB`, true)
+        .addField('OS', `${osType} ${osBit}`, true)
         
-        .addField('İşlemci', `\`\`\`xl\n${os.cpus().map(i => `${i.model}`)[0]}\n\`\`\``)
+        .addField('Processor', `\`\`\`xl\n${os.cpus().map(i => `${i.model}`)[0]}\n\`\`\``)
+        .setImage("https://media.discordapp.net/attachments/793827180513198100/810113577511419914/standard.gif")
         message.channel.send(s).then(mesaj.delete({timeout:1000}))
 }
   })
