@@ -23,7 +23,7 @@ msg.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
 		const reaction = collected.first();
 
 		if (reaction.emoji.name === '👍') {
-      message.channel.clone({position: message.channel.position}).then(message => message.send("https://tenor.com/view/explosion-boom-explode-gif-17383346", `Bu kanal Patlatıldı!`).then(message => message.send("https://media.tenor.com/videos/dd837defa87583a15782fd2bcc275147/mp4")))
+      message.channel.clone({position: message.channel.position}).then(message => message.send(new Discord.MessageEmbed().setTitle(`Bu kanal patlatıldı!`).setImage("https://tenor.com/view/explosion-boom-explode-gif-17383346")))
       message.channel.delete();
 		} else {
 			message.channel.send('Nuke işlemi iptal edildi!');
@@ -37,12 +37,13 @@ msg.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
 })
 }
   if(dil = "EN") {
+
       const onayembed = new Discord.MessageEmbed()
   .setColor("RED")
   .setTimestamp()
   .setAuthor("Nuke System")
-  .setFooter("Onaylamak için 👍 emojisine, Red etmek içinse 👎 emojisine tıklayabilirsiniz")
-  .setDescription("**UYARI!** \n\nEğer nuke işlemini onaylarsanız bu kanal kalıcı olarak **silinecek**,\n**geri getirilemeyecektir!**\nAncak bu kanalın **kopyası oluşturulacaktır!** \n")
+  .setFooter("You can click on the 👍 emoji to confirm or the 👎 emoji to Decline")
+  .setDescription("**Warning!** \nIf you confirm nuke **this channel will be permanently deleted**\n**cannot be restored!**\nBut **this channel will be duplicated!** \n")
   message.channel.send(onayembed).then(msg => {
 msg.react('👍').then(() => msg.react('👎'));
 
@@ -55,7 +56,7 @@ msg.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
 		const reaction = collected.first();
 
 		if (reaction.emoji.name === '👍') {
-      message.channel.clone({position: message.channel.position});
+      message.channel.clone({position: message.channel.position}).then(message => message.send(new Discord.MessageEmbed().setTitle(`This channel nuked!`).setImage("https://tenor.com/view/explosion-boom-explode-gif-17383346")))
       message.channel.delete();
 		} else {
 			message.channel.send('Nuke operation canceled!');
