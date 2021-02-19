@@ -45,19 +45,19 @@ const embed = new Discord.MessageEmbed()
 client.channels.cache.get('810145611939840000').send(embed);
 })
 */
-
+client.on("guildCreate", (guild) => {
+  const embed = new Discord.MessageEmbed()
+  .setTitle("Bir sunucuya katıldım")
+  .addField(`Sunucudaki kişi sayısı`, guild.memberCount)
+  .addField(`Sunucunun bölgesi`, )
+})
 client.on("message", message => {
   if(message.content == "invite") {
-      let invite = message.channel.createInvite(
-  {
-    maxAge: 10 * 60 * 1000, // maximum time for the invite, in milliseconds
-    maxUses: 1 // maximum times it can be used
-  },
-  `Requested with command by ${message.author.tag}`
-)
-.catch(console.log);
-
-  message.reply(invite ? `Here's your invite: ${invite}` : "There has been an error during the creation of the invite.");
+// Create an invite to a channel
+    let kanal = message.channel
+message.channel.createInvite( { maxAge: 0 })
+  .then(invite => kanal.send(`https://discord.gg/${invite.code}`))
+  .catch(console.error);
   }
 })
 client.on("message", async(message) => {
