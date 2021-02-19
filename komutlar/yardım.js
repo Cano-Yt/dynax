@@ -19,7 +19,7 @@ const embed = new Discord.MessageEmbed()
  \`Dil : TR | Türkçe\`
 
   \`Moderasyon\`
-<a:arrow:811578672426254427> **dil | prefix | otorol | sayaç | isim**
+<a:arrow:811578672426254427> **dil | prefix | otorol | sayaç | isim | nuke**
 
   \`Kullanıcı\`
 <a:arrow:811578672426254427> **istek | afk | davet**
@@ -42,7 +42,7 @@ await message.channel.send(embed)
  \`Language : EN | English\`
  
   \`Moderation\`
-<a:arrow:811578672426254427> **Language | prefix | autorole | counter | nickname**
+<a:arrow:811578672426254427> **Language | prefix | autorole | counter | nickname | nuke**
 
   \`User\`
 <a:arrow:811578672426254427> **request | afk | invite**
