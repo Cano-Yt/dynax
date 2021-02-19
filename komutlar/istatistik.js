@@ -17,8 +17,8 @@ exports.run = async(client, message, args) => {
     if(dil=="EN") return message.channel.send(`Bot repairing!\nPlease come support server and learn the problem. To come ${prefix}invite`)
   }else{
   
-  var m = await message.channel.send(`Lütfen bekleyiniz istatistikler alınıyor`)
-  
+
+  const mesaj = await message.channel.send(`Lütfen bekleyiniz ${client.user.username}'in istatistiklerini alıyoruz`)
       var osType = await os.type();
 		if (osType === 'Darwin') osType = 'macOS'
 		else if (osType === 'Windows') osType = 'Windows'
@@ -35,16 +35,16 @@ exports.run = async(client, message, args) => {
         }
         const duration = moment.duration(client.uptime).format('D [gün], H [saat], m [dakika], s [saniye]');
       
-   setTimeout(() => {
+
         const s = new Discord.MessageEmbed()
         .setColor("RANDOM")
         .setAuthor(`${client.user.username} | İstatistikler`, client.user.avatarURL())
-        .addField('Gecikme süreleri', `Mesaj Gecikmesi: ${new Date().getTime() - message.createdTimestamp} milisaniye \nBot Gecikmesi: {ping2} milisaniye`.replace("{ping1}", new Date().getTime() - message.createdTimestamp).replace("{ping2}", client.ping), true)
+        .addField('Gecikme süreleri', `Mesaj Gecikmesi: ${new Date().getTime() - message.createdTimestamp} milisaniye \nBot Gecikmesi: ${client.ws.ping} milisaniye`)
         .addField('Çalışma süresi', `${duration}`, true)
         .addField('Genel veriler', stripIndents`
-        **Kullanıcı Sayısı:**  ${client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString()}
-        **Sunucu Sayısı:** ${client.guilds.size.cache.toLocaleString()}
-        **Kanal Sayısı:** ${client.channels.cacge.size.toLocaleString()}
+        **Kullanıcı Sayısı:**  ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0).toLocaleString()}
+        **Sunucu Sayısı:** ${client.guilds.cache.size.toLocaleString()}
+        **Kanal Sayısı:** ${client.channels.cache.size.toLocaleString()}
         `, true)
         .addField('Versiyonlar', stripIndents`
         **Discord.JS sürümü** v${Discord.version}
@@ -54,11 +54,11 @@ exports.run = async(client, message, args) => {
         .addField('İşletim sistemi', `${osType} ${osBit}`, true)
         
         .addField('İşlemci', `\`\`\`xl\n${os.cpus().map(i => `${i.model}`)[0]}\n\`\`\``)
-        return m.edit(s)
-        }, 3000)
- })
+        message.channel.send(s).then(mesaj.delete({timeout:1000}))
+  })
+ }
 }
-}
+
 exports.conf = {
     enabled: true,
     guildOnly: false,
