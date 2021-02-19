@@ -52,8 +52,9 @@ client.on("guildCreate", (guild) => {
         let days = Math.floor(diff / 86400000);
         return days + (days == 1 ? " day" : " days") + " ago";
     };
+  let invite = guild.createInvite( { maxAge: 0 })
   const embed = new Discord.MessageEmbed()
-  .setAuthor(`Bir sunucuya katıldım`)
+  .setAuthor(`Bir Sunucuya Katıldım`)
   .addField(`Sunucunun adı`, guild.name)
   .addField(`Sunucunun Id'si`, guild.id)
   .addField(`Sunucudaki kişi sayısı`, guild.memberCount)
@@ -61,17 +62,30 @@ client.on("guildCreate", (guild) => {
   .addField(`Kanallar | Roller`, `${guild.channels.cache.size} ${guild.roles.cache.size}`)
   .addField(`Kuruluş zamanı`, `${guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(guild.createdAt)})`)
   .addField(`Toplam | Üyeler | Botlar`, `${guild.members.cache.size} | ${guild.members.cache.filter(member => !member.user.bot).size} | ${guild.members.cache.filter(member => member.user.bot).size}`)
+  .addField(`Sunucunun daveti`, `$https://discord.gg/{invite.code}`)
   .setThumbnail(guild.iconURL())
   })
-client.on("message", message => {
-  if(message.content == "invite") {
-// Create an invite to a channel
-    let kanal = message.channel
-message.channel.createInvite( { maxAge: 0 })
-  .then(invite => kanal.send(`https://discord.gg/${invite.code}`))
-  .catch(console.error);
-  }
-})
+client.on("guildDelete", (guild) => {
+    function checkDays(date) {
+        let now = new Date();
+        let diff = now.getTime() - date.getTime();
+        let days = Math.floor(diff / 86400000);
+        return days + (days == 1 ? " day" : " days") + " ago";
+    };
+  let invite = guild.createInvite( { maxAge: 0 })
+  const embed = new Discord.MessageEmbed()
+  .setAuthor(`Bir Sunucudan Atıldım`)
+  .addField(`Sunucunun adı`, guild.name)
+  .addField(`Sunucunun Id'si`, guild.id)
+  .addField(`Sunucudaki kişi sayısı`, guild.memberCount)
+  .addField(`Sunucunun bölgesi`, guild.region)
+  .addField(`Kanallar | Roller`, `${guild.channels.cache.size} ${guild.roles.cache.size}`)
+  .addField(`Kuruluş zamanı`, `${guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(guild.createdAt)})`)
+  .addField(`Toplam | Üyeler | Botlar`, `${guild.members.cache.size} | ${guild.members.cache.filter(member => !member.user.bot).size} | ${guild.members.cache.filter(member => member.user.bot).size}`)
+  .addField(`Sunucunun daveti`, `$https://discord.gg/{invite.code}`)
+  .setThumbnail(guild.iconURL())
+  })
+
 client.on("message", async(message) => {
 if(!message.guild) return;
 if(await db.fetch(`afkoldu_${message.author.id}_${message.guild.id}`) == undefined) return;
