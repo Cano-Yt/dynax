@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const db = require("quick.db")
 const ayarlar = require("../ayarlar.json")
+const fs = require("fs")
 
 
 exports.run = async(client, message) => {
@@ -11,12 +12,16 @@ exports.run = async(client, message) => {
     if(dil=="TR") return message.channel.send(`Bot bakımda!\nLütfen destek sunucumuza gelerek sorunu öğreniniz. Gelmel için ${prefix}davet`)
     if(dil=="EN") return message.channel.send(`Bot repairing!\nPlease come support server and learn the problem. To come ${prefix}invite`)
   } else {
+fs.readdir("./komutlar/", async(err, files) => {
+  if (err) console.error(err);
+  
   if(dil == "TR") {
 const embed = new Discord.MessageEmbed()
 .setTitle("Yardım menüsü")
     .setDescription(`
  \`Prefix : ${prefix}\`
  \`Dil : TR | Türkçe\`
+ \`Toplam komut : ${files.leght}\`
 
   \`Moderasyon\`
 <a:arrow:811578672426254427> **dil | prefix | otorol | sayaç | isim | nuke | ayarlar**
@@ -40,6 +45,7 @@ await message.channel.send(embed)
     .setDescription(`
  \`Prefix : ${prefix}\`
  \`Language : EN | English\`
+ \`Total commands : ${files.leght}\`
  
   \`Moderation\`
 <a:arrow:811578672426254427> **Language | prefix | autorole | counter | nickname | nuke | settings**
@@ -57,7 +63,8 @@ await message.channel.send(embed)
 .setColor("#aaffff")
 await message.channel.send(embed)
     }
-  }
+})
+}      
 };
 
 
