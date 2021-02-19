@@ -11,7 +11,9 @@ exports.run = async(client, message, args) => {
             if(dil=="TR") return message.channel.send(`Bot bakımda!\nLütfen destek sunucumuza gelerek sorunu öğreniniz. Gelmel için ${prefix}davet`)
     if(dil=="EN") return message.channel.send(`Bot repairing!\nPlease come support server and learn the problem. To come ${prefix}invite`)
   }else{
-
+if(dil == "TR") {
+  const embed = new Discord.MessageEmbed()
+}
 }
 
 }
