@@ -33,7 +33,7 @@ const log = message => {
 
 ///////////// KOMUTLAR BAŞ
 
-/*
+
 client.on("ready", () => {
 const embed = new Discord.MessageEmbed()
 .setTitle(`Bot uptime edildi`)
@@ -44,7 +44,7 @@ const embed = new Discord.MessageEmbed()
 `)
 client.channels.cache.get('810145611939840000').send(embed);
 })
-*/
+
 
 /*
 client.on("guildMemberAdd", async member => {
@@ -106,9 +106,9 @@ await member.roles.add(rol)
 const embed = new Discord.MessageEmbed()
 .setTitle(`${client.user.username} - Otorol sitemi`)
 .setDescription(`
-Sunucuya ${member} Adlı üye katıldı. Hoş geldin.
+Sunucuya ${member} Adlı üye katıldı. **Hoş geldin.**
 <@&${rol}> Adlı rol üyeye verildi.
-Senin gelmenle ${member.guild.memberCount} Kişi olduk!`)
+Senin gelmenle **${member.guild.memberCount}** Kişi olduk!`)
 const embed1 = new Discord.MessageEmbed()
 .setTitle(`${client.user.username} - Otorol sitemi`)
 .setDescription(`
@@ -133,7 +133,7 @@ client.on("guildMemberAdd", async member => {
     .setTitle(`${client.user.username} - Sayaç sistemi`)
     .setDescription(`
     Sunucuya ${member} katıldı.
-    **${sayı}** kişi olmamıza {sonuç}** kişi kaldı.
+    **${sayı}** kişi olmamıza **{sonuç}** kişi kaldı.
     Toplamda **${member.guild.memberCount}** kişiyiz.
     `)
     await client.channels.cache.get(kanal).send(embed);
