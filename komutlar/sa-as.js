@@ -12,6 +12,9 @@ let dil = await db.fetch(`sunucudili_${message.guild.id}`)
     if(dil=="TR") return message.channel.send(`Bot bakımda!\nLütfen destek sunucumuza gelerek sorunu öğreniniz. Gelmel için ${prefix}davet`)
     if(dil=="EN") return message.channel.send(`Bot repairing!\nPlease come support server and learn the problem. To come ${prefix}invite`)
   } else {
+if(dil == "EN") {  if(!message.author.hasPermission("MANAGE_NICKNAMES")) return message.channel.send(`You must have \`Manage nicknames\` Permission to use this command.`)}
+if(dil == "TR") {  if(!message.author.hasPermission("MANAGE_NICKNAMES")) return message.channel.send(`Bu komutu kullanabilmek için \`Takma adları yönet\` Yetkisine sahip olmalısın.`)}
+
     let selam = db.fetch(`sa-as_${message.guild.id}`)
     if(dil == "TR") {
       if(args[0] !== "kapat" && args[0] !== "aç") return message.channel.send(`Selam verene cevap verme sistemini açmak için ${prefix}sa-as aç\nKapamak için ise ${prefix}sa-as kapat`)

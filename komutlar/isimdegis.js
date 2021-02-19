@@ -11,7 +11,9 @@ exports.run = async(client, message, args) => {
             if(dil=="TR") return message.channel.send(`Bot bakımda!\nLütfen destek sunucumuza gelerek sorunu öğreniniz. Gelmel için ${prefix}davet`)
     if(dil=="EN") return message.channel.send(`Bot repairing!\nPlease come support server and learn the problem. To come ${prefix}invite`)
   } else {
-    let member = message.mentions.members.first()
+if(dil == "EN") {  if(!message.author.hasPermission("MANAGE_NICKNAMES")) return message.channel.send(`You must have \`Manage nicknames\` Permission to use this command.`)}
+if(dil == "TR") {  if(!message.author.hasPermission("MANAGE_NICKNAMES")) return message.channel.send(`Bu komutu kullanabilmek için \`Takma adları yönet\` Yetkisine sahip olmalısın.`)}
+        let member = message.mentions.members.first()
     if(!member) { 
 if(dil == "TR") {return message.channel.send(`Bir kullanıcı etiketlemelisin.`)}
 if(dil == "EN") {return message.channel.send(`Please tag a member.`)}

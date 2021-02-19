@@ -1,11 +1,18 @@
 const Discord = require("discord.js")
+const ayarlar = require("../ayarlar.json")
 const db = require("quick.db")
 
 exports.run = async (client, message, args) => {
   
 let dil = db.fetch(`sunucudili_${message.guild.id}`)
+    let prefix = await db.fetch(`prefix_${message.guild.id}`) || ayarlar.prefix    
+    let bakım = db.fetch(`bakım`) 
+if(bakım == "bakımda") {
+ if(dil=="TR") return message.channel.send(`Bot bakımda!\nLütfen destek sunucumuza gelerek sorunu öğreniniz. Gelmel için ${prefix}davet`)
+ if(dil=="EN") return message.channel.send(`Bot repairing!\nPlease come support server and learn the problem. To come ${prefix}invite`)
+} else {
 if(dil == "TR") {
-  if(message.author.hasPermission("ADMINISTRATOR")) return message.channel.send(`Bu komutu kullanabilmek için \``)
+  if(!message.author.hasPermission("ADMINISTRATOR")) return message.channel.send(`Bu komutu kullanabilmek için \`Yönetici\` Yetkisine sahip olmalısın.`)
   const onayembed = new Discord.MessageEmbed()
   .setColor("aaffff")
   .setTimestamp()
@@ -38,6 +45,7 @@ msg.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
 })
 }
   if(dil == "EN") {
+  if(!message.author.hasPermission("ADMINISTRATOR")) return message.channel.send(`You must have \`Administrator\` Permission to use this command.`)
       const onayembed = new Discord.MessageEmbed()
   .setColor("aaffff")
   .setTimestamp()
@@ -69,6 +77,7 @@ msg.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
   
 })
   }
+}
 };
 
 exports.conf = {
