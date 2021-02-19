@@ -46,15 +46,23 @@ client.channels.cache.get('810145611939840000').send(embed);
 })
 */
 client.on("guildCreate", (guild) => {
+    function checkDays(date) {
+        let now = new Date();
+        let diff = now.getTime() - date.getTime();
+        let days = Math.floor(diff / 86400000);
+        return days + (days == 1 ? " day" : " days") + " ago";
+    };
   const embed = new Discord.MessageEmbed()
   .setAuthor(`Bir sunucuya katıldım`)
   .addField(`Sunucunun adı`, guild.name)
   .addField(`Sunucunun Id'si`, guild.id)
   .addField(`Sunucudaki kişi sayısı`, guild.memberCount)
   .addField(`Sunucunun bölgesi`, guild.region)
-  .addField(`Kanallar | Roller`, `${guild.channels.cache.size} ${})
+  .addField(`Kanallar | Roller`, `${guild.channels.cache.size} ${guild.roles.cache.size}`)
+  .addField(`Kuruluş zamanı`, `${guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(guild.createdAt)})`)
   .addField(`Toplam | Üyeler | Botlar`, `${guild.members.cache.size} | ${guild.members.cache.filter(member => !member.user.bot).size} | ${guild.members.cache.filter(member => member.user.bot).size}`)
-})
+  .setThumbnail(guild.iconURL())
+  })
 client.on("message", message => {
   if(message.content == "invite") {
 // Create an invite to a channel
@@ -86,7 +94,7 @@ if(dil == "TR") {
   **Giriş zamanı:** ${sp}
   **Çıkış zamanı:** ${atılma}
   `)
-  message.channel.send(embed)
+  message.channel.send(embed).then(m => m.delete({ timeout: 10000}))
 await db.delete(`afksebeb_${message.author.id}_${message.guild.id}`)
 await db.delete(`afkoldu_${message.author.id}_${message.guild.id}`)
 await db.delete(`giriş_${message.author.id}_${message.guild.id}`)
@@ -105,27 +113,27 @@ await db.delete(`giriş_${message.author.id}_${message.guild.id}`)
   **Entry time:** ${sp}
   **Exit time:** ${atılmaen}
   `)
-  message.channel.send(embed)
+  message.channel.send(embed).then(m => m.delete({ timeout: 10000}))
 await db.delete(`afksebeb_${message.author.id}_${message.guild.id}`)
 await db.delete(`afkoldu_${message.author.id}_${message.guild.id}`)
 await db.delete(`giriş_${message.author.id}_${message.guild.id}`)
   }
 })
 client.on("message", async(message) => {
-if(message.guild) return;
+if(!message.guild) return;
   let member = message.mentions.members.first()
   if(!member) return;
   let dil = await db.fetch(`sunucudili_${message.guild.id}`)
   if(member.id == message.author.id) return;
-  let afk = await db.fetch(`afkoldu_${member.id}_${message.channel.id}`)
+  let afk = await db.fetch(`afkoldu_${member.id}_${message.guild.id}`)
   if(afk !== "evet") return;
-  const sebepp = await db.fetch(`afksebeb_${member.id}_${message.channel.id}`)
-  const sp = await db.fetch(`giriş_${member.id}_${message.channel.id}`)
+  const sebepp = await db.fetch(`afksebeb_${member.id}_${message.guild.id}`)
+  const sp = await db.fetch(`giriş_${member.id}_${message.guild.id}`)
 if(dil == "TR") {
   const embed = new Discord.MessageEmbed()
   .setTitle(`Afk sistemi`)
   .setDescription(`
-  **${member.tag} Afk**
+  **${member.user.tag} Afk**
   **Sebebi : **\`${sebepp}\`
   **Giriş zamanı: **\`${sp}\`
   `)
@@ -136,7 +144,7 @@ if(dil == "TR") {
    const embed = new Discord.MessageEmbed()
   .setTitle(`Afk system`)
   .setDescription(`
-  **${member.tag} is Afk**
+  **${member.user.tag} is Afk**
   **Reason : **\`${sebepp}\`
   **Entry time: **\`${sp}\`
   `)

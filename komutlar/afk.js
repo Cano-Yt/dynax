@@ -42,7 +42,7 @@ exports.run = async (client, message, args) => {
     **Giriş zamanı: **${atılma}
     `)
     .setThumbnail("https://cdn.discordapp.com/attachments/783001757596254238/811956462666514442/811586592102940704.png")
-    message.channel.send(embed)
+    message.channel.send(embed).then(m => m.delete({ timeout: 10000}))
   } else {
     await db.set(`afksebeb_${message.author.id}_${message.guild.id}`, sebeb)
     await db.set(`afkoldu_${message.author.id}_${message.guild.id}`, "evet")
