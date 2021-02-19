@@ -47,9 +47,13 @@ client.channels.cache.get('810145611939840000').send(embed);
 */
 client.on("guildCreate", (guild) => {
   const embed = new Discord.MessageEmbed()
-  .setTitle("Bir sunucuya katıldım")
+  .setAuthor(`Bir sunucuya katıldım`)
+  .addField(`Sunucunun adı`, guild.name)
+  .addField(`Sunucunun Id'si`, guild.id)
   .addField(`Sunucudaki kişi sayısı`, guild.memberCount)
-  .addField(`Sunucunun bölgesi`, )
+  .addField(`Sunucunun bölgesi`, guild.region)
+  .addField(`Kanallar | Roller`, `${guild.channels.cache.size} ${})
+  .addField(`Toplam | Üyeler | Botlar`, `${guild.members.cache.size} | ${guild.members.cache.filter(member => !member.user.bot).size} | ${guild.members.cache.filter(member => member.user.bot).size}`)
 })
 client.on("message", message => {
   if(message.content == "invite") {
