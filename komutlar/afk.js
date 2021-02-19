@@ -4,9 +4,10 @@ const moment = require("moment")
 const ayarlar = require("../ayarlar.json");
 
 exports.run = async (client, message, args) => {
+  if(!message.guild) return;
   let dil = await db.fetch(`sunucudili_${message.guild.id}`)
   let afk = db.fetch(`afkoldu_${message.author.id}_${message.guild.id}`)
-  if(afk) return;
+  if(afk == "evet") return;
   let prefix = ayarlar.prefix
   let sebeb = args.slice(0).join(' ');
   

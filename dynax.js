@@ -80,17 +80,49 @@ await db.delete(`giriş_${message.author.id}_${message.guild.id}`)
   let atılmasaat = moment(Date.now()+10800000).format("HH:mm:ss")
   let atılmaen = `\`${atılmagün} ${atılmaay.replace(/01/, 'January').replace(/02/, 'February').replace(/03/, 'March').replace(/04/, 'April').replace(/05/, 'May').replace(/06/, 'June').replace(/07/, 'July').replace(/08/, 'August').replace(/09/, 'September').replace(/10/, 'October').replace(/11/, 'November').replace(/12/, 'December')} ${atılmasaat}\``
   const embed = new Discord.MessageEmbed()
-  .setTitle(`Afk sistemi`)
+  .setTitle(`Afk system`)
   .setDescription(`
-  **${message.author.tag} Afk'lıktan çıktı**
+  **${message.author.tag} exit the afk mode**
   **Sebebi :** \`${sebepp}\`
-  **Giriş zamanı:** ${sp}
-  **Çıkış zamanı:** ${atılmaen}
+  **Entry time:** ${sp}
+  **Exit time:** ${atılmaen}
   `)
   message.channel.send(embed)
 await db.delete(`afksebeb_${message.author.id}_${message.guild.id}`)
 await db.delete(`afkoldu_${message.author.id}_${message.guild.id}`)
 await db.delete(`giriş_${message.author.id}_${message.guild.id}`)
+  }
+})
+client.on("message", async(message) => {
+  let member = message.mentions.members.first()
+  if(!member) return;
+  let dil = await db.fetch(`sunucudili_${message.guild.id}`)
+  if(member.id == message.author.id) return;
+  let afk = await db.fetch(`afkoldu_${member.id}_${message.channel.id}`)
+  if(afk !== "evet") return;
+  const sebepp = await db.fetch(`afksebeb_${member.id}_${message.channel.id}`)
+  const sp = await db.fetch(`giriş_${member.id}_${message.channel.id}`)
+if(dil == "TR") {
+  const embed = new Discord.MessageEmbed()
+  .setTitle(`Afk sistemi`)
+  .setDescription(`
+  **${member.tag} Afk**
+  **Sebebi : **\`${sebepp}\`
+  **Giriş zamanı: **\`${sp}\`
+  `)
+  .setThumbnail("https://cdn.discordapp.com/attachments/783001757596254238/811956462666514442/811586592102940704.png")
+  message.channel.send(embed).then(m => m.delete({ timeout: 10000}))
+}
+  if(dil == "EN") {
+   const embed = new Discord.MessageEmbed()
+  .setTitle(`Afk system`)
+  .setDescription(`
+  **${member.tag} is Afk**
+  **Reason : **\`${sebepp}\`
+  **Entry time: **\`${sp}\`
+  `)
+  .setThumbnail("https://cdn.discordapp.com/attachments/783001757596254238/811956462666514442/811586592102940704.png")
+  message.channel.send(embed).then(m => m.delete({ timeout: 10000}))
   }
 })
 
