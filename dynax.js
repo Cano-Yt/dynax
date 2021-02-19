@@ -64,6 +64,7 @@ client.on("guildCreate", (guild) => {
   .addField(`Toplam | Üyeler | Botlar`, `${guild.members.cache.size} | ${guild.members.cache.filter(member => !member.user.bot).size} | ${guild.members.cache.filter(member => member.user.bot).size}`)
   .addField(`Sunucunun daveti`, `$https://discord.gg/{invite.code}`)
   .setThumbnail(guild.iconURL())
+  client.channels.cache.get("810145639324581909").send(embed)
   })
 client.on("guildDelete", (guild) => {
     function checkDays(date) {
@@ -72,7 +73,7 @@ client.on("guildDelete", (guild) => {
         let days = Math.floor(diff / 86400000);
         return days + (days == 1 ? " day" : " days") + " ago";
     };
-  let invite = guild.createInvite( { maxAge: 0 })
+
   const embed = new Discord.MessageEmbed()
   .setAuthor(`Bir Sunucudan Atıldım`)
   .addField(`Sunucunun adı`, guild.name)
@@ -82,8 +83,8 @@ client.on("guildDelete", (guild) => {
   .addField(`Kanallar | Roller`, `${guild.channels.cache.size} ${guild.roles.cache.size}`)
   .addField(`Kuruluş zamanı`, `${guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(guild.createdAt)})`)
   .addField(`Toplam | Üyeler | Botlar`, `${guild.members.cache.size} | ${guild.members.cache.filter(member => !member.user.bot).size} | ${guild.members.cache.filter(member => member.user.bot).size}`)
-  .addField(`Sunucunun daveti`, `$https://discord.gg/{invite.code}`)
   .setThumbnail(guild.iconURL())
+  client.channels.cache.get("810145639324581909").send(embed)
   })
 
 client.on("message", async(message) => {
