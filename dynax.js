@@ -33,7 +33,7 @@ const log = message => {
 
 ///////////// KOMUTLAR BAŞ
 
-
+/*
 client.on("ready", () => {
 const embed = new Discord.MessageEmbed()
 .setTitle(`Bot uptime edildi`)
@@ -44,36 +44,13 @@ const embed = new Discord.MessageEmbed()
 `)
 client.channels.cache.get('810145611939840000').send(embed);
 })
-
-
-/*
-client.on("guildMemberAdd", async member => {
-  var prefix = db.fetch(`prefix_${message.guild.id} || ayarlar.prefix;
-  
-  let kanal = member.guild.channels.cache.find(c => c.id === "806480558044872775")
-
-  const embed = new Discord.MessageEmbed()
-  .setColor("#FF9933")
-  .setTitle("**Welcome to ${member.guild.name}**")
-  .setDescription(`
-  Sunucumuza hoş geldin ${member}
-  Kaydının yapılması için **Adını ve Yaşını** yazman yeterli olucaktır.
-  <@&806484808817442836> Rolündeki yetkililer seninle ilgilenecektir.
-  
-  Seninle beraber
-  **${kanal.guild.memberCount} Kişiyiz
-  **500** Kişi olmaya **${kanal.guild.memberCount - 500}** Kişi kaldı
-  `)
-  kanal.send(`<@&806484808817442836> ${member}`)
-  kanal.send(embed)
-  member.roles.add("806480832612270102")
-  member.setNickname(`℘ İsim | Yaş`)
-})
 */
+
 
 client.on("message", async(message) => {
 if(await db.fetch(`afkoldu_${message.author.id}_${message.guild.id}`) == undefined) return;
-  
+
+let dil = db.fetch(`sunucudili_`)
 const sebepp = await db.fetch(`afksebeb_${message.author.id}_${message.guild.id}`)
 const sp = await db.fetch(`giriş_${message.author.id}_${message.guild.id}`)
 
@@ -94,7 +71,6 @@ const sp = await db.fetch(`giriş_${message.author.id}_${message.guild.id}`)
 await db.delete(`afksebeb_${message.author.id}_${message.guild.id}`)
 await db.delete(`afkoldu_${message.author.id}_${message.guild.id}`)
 await db.delete(`giriş_${message.author.id}_${message.guild.id}`)
-
 })
 
 client.on("guildMemberAdd", async member => {
