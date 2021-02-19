@@ -26,12 +26,25 @@ let dil = await db.fetch(`sunucudili_${message.guild.id}`)
         return message.channel.send(`Selam verene cevap verme sistemi açıldı.`)
       }
     }
+    if(dil == "EN") {
+            if(args[0] !== "close" && args[0] !== "open") return message.channel.send(`To open the system of answering the hello ${prefix}hello open\nKapamak için ise ${prefix}hello close`)
+    if(args[0] == "close") {
+      if(selam !== "acik") return message.channel.send(`selam verene cevap verme sistemi zaten kapalı.`)
+      await db.delete(`sa-as_${message.guild.id}`)
+      return message.channel.send(`Selam verene cevap verme sistemi kapandı.`)
+     }  
+      if(args[0] == "open") { 
+        if(selam == "acik") return message.channel.send(`Selam verene cevap verme sistemi zaten açık.`)
+        await db.set(`sa-as_${message.guild.id}`, "acik")
+        return message.channel.send(`Selam verene cevap verme sistemi açıldı.`)
+    }
   }
+}
 }
 exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliases: [],
+    aliases: ["hello"],
     permLevel: 0
   };
   

@@ -35,7 +35,7 @@ exports.run = async(client, message, args) => {
         }
         const duration = moment.duration(client.uptime).format('D [gün], H [saat], m [dakika], s [saniye]');
       
-
+        if(dil == "TR") {
         const s = new Discord.MessageEmbed()
         .setColor("RANDOM")
         .setAuthor(`${client.user.username} | İstatistikler`, client.user.avatarURL())
@@ -55,6 +55,30 @@ exports.run = async(client, message, args) => {
         
         .addField('İşlemci', `\`\`\`xl\n${os.cpus().map(i => `${i.model}`)[0]}\n\`\`\``)
         message.channel.send(s).then(mesaj.delete({timeout:1000}))
+        }
+        if(dil == "EN") {
+        const duration = moment.duration(client.uptime).format('D [day], H [hours], m [minute], s [seconds]');
+      
+        const s = new Discord.MessageEmbed()
+        .setColor("RANDOM")
+        .setAuthor(`${client.user.username} | İstatistikler`, client.user.avatarURL())
+        .addField('Delay times', `Mesaj Gecikmesi: ${new Date().getTime() - message.createdTimestamp} milisaniye \nBot Gecikmesi: ${client.ws.ping} milisaniye`)
+        .addField('Uptime', `${duration}`, true)
+        .addField('Genel veriler', stripIndents`
+        **Kullanıcı Sayısı:**  ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0).toLocaleString()}
+        **Sunucu Sayısı:** ${client.guilds.cache.size.toLocaleString()}
+        **Kanal Sayısı:** ${client.channels.cache.size.toLocaleString()}
+        `, true)
+        .addField('Versiyonlar', stripIndents`
+        **Discord.JS sürümü** v${Discord.version}
+        **NodeJS sürümü** ${process.version}
+        `, true)
+        .addField('Kullanılan bellek boyutu', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024).toLocaleString()} MB`, true)
+        .addField('İşletim sistemi', `${osType} ${osBit}`, true)
+        
+        .addField('İşlemci', `\`\`\`xl\n${os.cpus().map(i => `${i.model}`)[0]}\n\`\`\``)
+        message.channel.send(s).then(mesaj.delete({timeout:1000}))
+}
   })
  }
 }
