@@ -19,8 +19,8 @@ exports.run = async(client, message, args) => {
   
    
   let mesaj; {
- if(dil == "TR") {message.channel.send(`Lütfen bekleyiniz **${client.user.username}**'in istatistiklerini alıyoruz`)}
- if(dil == "EN") {message.channel.send(`Please wait we are getting statistics of **${client.user.username}**`)}
+ if(dil == "TR") { mesaj = message.channel.send(`Lütfen bekleyiniz **${client.user.username}**'in istatistiklerini alıyoruz`)}
+ if(dil == "EN") { mesaj = message.channel.send(`Please wait we are getting statistics of **${client.user.username}**`)}
   }
       var osType = await os.type();
 		if (osType === 'Darwin') osType = 'macOS'
